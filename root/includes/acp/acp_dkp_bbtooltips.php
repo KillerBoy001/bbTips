@@ -1,9 +1,8 @@
 <?php
 /**
 * This class manages bbtips 
-* 
 * @author sajaki9@gmail.com
-* @version $Id$
+* @version 1.0.0
 * @copyright (c) 2009 bbdkp http://code.google.com/p/bbdkp/
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * 

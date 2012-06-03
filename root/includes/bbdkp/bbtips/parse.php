@@ -30,7 +30,6 @@ class bbtips
 	public function parse($message)
 	{
 	    global $phpbb_root_path, $phpEx, $config;
-	    unset($match); 
 	    $match = array();
 	    $parses = 0;
                 	    

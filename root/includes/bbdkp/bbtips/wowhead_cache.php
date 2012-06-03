@@ -24,8 +24,6 @@ if (!defined('IN_PHPBB'))
 class wowhead_cache
 {
 
-
-
 	public function saveNPC($info)
 	{
 		if (sizeof($info) == 0  || !isset($info['npcid']) || !isset($info['name'])  )
@@ -56,9 +54,12 @@ class wowhead_cache
 	}
 
 	/**
-	* Saves itemset
-	* @access public
-	**/
+	 * inserts an itemset
+	 *
+	 * @param array $itemset
+	 * @param array $items
+	 * @return boolean
+	 */
 	public function saveItemset($itemset, $items )
 	{
 	    global $db;
@@ -112,6 +113,13 @@ class wowhead_cache
 		}
 	}
 
+	/**
+	 * selects an NPC
+	 *
+	 * @param string $name
+	 * @param string $lang
+	 * @return array
+	 */
 	public function getNPC($name, $lang)
 	{
 		global $config, $db; 
@@ -124,8 +132,7 @@ class wowhead_cache
 		
 		$query_text = 'SELECT npcid, name FROM ' . BBTIPS_NPC_TBL . ' WHERE 
 					 (search_name ' . $search . '
-					      OR name ' . $search . '
-						  OR npcid '. $search . "
+					      OR name ' . $search . "
 					  )  AND lang='"  . $lang . "'";
 		
 		$result = $db->sql_query($query_text);
@@ -144,9 +151,11 @@ class wowhead_cache
 	}
 
 	/**
-	* Gets itemset
-	* @access public
-	**/
+	 * Gets an itemset
+	 *
+	 * @param string $name
+	 * @return string
+	 */
 	public function getItemset($name)
 	{
 		global $db, $config; 
@@ -155,7 +164,6 @@ class wowhead_cache
 		
 		$query_text = 'SELECT setid, name FROM ' . BBTIPS_ITEMSET_TBL . ' WHERE 
 					 (search_name ' . $search . '
-					      OR setid ' . $search . '
 						  OR name '. $search . "
 					  )  AND lang='"  . $config['bbtips_lang'] . "'";
 		
@@ -175,11 +183,12 @@ class wowhead_cache
 	}
 
 	
-
 	/**
-	* Gets itemset components
-	* @access public
-	**/
+	 * Gets itemset components
+	 *
+	 * @param int $id
+	 * @return array
+	 */
 	public function _getItemsetReagents($id)
 	{
 	    if (trim($id) == '')
@@ -214,15 +223,17 @@ class wowhead_cache
 	}
 
 	/**
-	* Gets Gem from 
-	* @access public
-	**/
+	 * Gets Gem from 
+	 *
+	 * @param unknown_type $itemid
+	 * @return unknown
+	 */
 	public function getGems($itemid)
 	{
 	    
 	    global $db;
 		$gems = array();
-		$query_text = 'SELECT gemid FROM ' . BBTIPS_GEM_TBL . ' WHERE itemid=\'$itemid\' ORDER BY slot ASC';
+		$query_text = 'SELECT gemid FROM ' . BBTIPS_GEM_TBL . " WHERE itemid= '" . $itemid . "' ORDER BY slot ASC";
 		$result = $db->sql_query($query_text);
 
 		if ( $db->sql_affectedrows() == 0)
@@ -284,7 +295,6 @@ class wowhead_cache
 		$query_text = 'SELECT itemid, name, search_name, quality, rank, type, lang, icon, icon_size
 							 FROM ' . BBTIPS_CACHE_TBL . ' WHERE 
 					 (search_name ' . $search . '
-					      OR itemid ' . $search . '
 						  OR name '. $search;
 		$query_text .= ")  AND lang='"  . $lang . "' AND type='"  . $type . "'";
 		

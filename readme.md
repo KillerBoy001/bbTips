@@ -1,4 +1,4 @@
-#bbTips v0.4.4
+#bbTips v1.0.0
 
 a BBCode Tooltip mod compatible with bbDKP. can also be installed as a standalone mod
 
