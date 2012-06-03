@@ -89,8 +89,9 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 
 
 ### Requirements
-*	bbDKP 1.2.6 or higher with Wow installed
-*	or phpBB3
+*	bbDKP 1.2.7 or higher with Wow installed
+*	or phpBB3 only
+*	dbms supported : Mysql, MSSQL, postgresql, Oracle
 
 
 
