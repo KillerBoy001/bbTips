@@ -183,6 +183,12 @@ class wowhead_quest extends wowhead
 		}
 		else
 		{
+			/* cleanup json
+			 * see http://www.bbdkp.com/tracker.php?p=5&t=209
+			* and http://www.wowhead.com/forums&topic=205251&p=3247970
+			*/
+			$line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
+			
 			// decode the json
 			if (!$json = json_decode($line, true))
 			{

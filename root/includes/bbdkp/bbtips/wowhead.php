@@ -493,7 +493,7 @@ class wowhead
                       CURLE_COULDNT_CONNECT,          7
                       CURLE_FTP_WEIRD_SERVER_REPLY,   8
                     */
-		       
+				$errnum = (curl_errno ( $curl )); 
 				switch ($errnum) 
 				{
 				    case "0" :
