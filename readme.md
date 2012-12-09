@@ -1,4 +1,4 @@
-#bbTips v1.0.1
+#bbTips v1.0.2
 
 a BBCode Tooltip mod compatible with bbDKP. can also be installed as a standalone mod
 
@@ -94,4 +94,8 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 *	dbms supported : Mysql, MSSQL, postgresql, Oracle
 
 
+### changes
 
+
+-	1.0.2
+	-	updated to phpBB 3.0.11 
