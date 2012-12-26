@@ -98,8 +98,19 @@ class wowhead_spell extends wowhead
 
 	
 	/*
-	 * search using Dom parser
+	 * 
 	 */
+	
+	
+	
+	
+	
+	/**
+	* search using Dom parser
+	* 
+	* @param unknown_type $name
+	* @param unknown_type $rank
+	*/
 	public function _getSpellByName($name, $rank = 0)
 	{
 		global $phpEx, $phpbb_root_path; 
@@ -160,8 +171,7 @@ class wowhead_spell extends wowhead
 				if (stripslashes(strtolower($spell['name'])) == stripslashes(strtolower($name)))
 				{
 					// add it to the array
-					$json_array[] = $spell;	
-					
+					$json_array[] = $spell;
 				}
 			}
 			
@@ -186,8 +196,6 @@ class wowhead_spell extends wowhead
 			return $spell; 
 			
 		}
-		
-		
 		
 	}
 	
@@ -274,6 +282,11 @@ class wowhead_spell extends wowhead
 				break;
 			}
 			elseif (strpos($line, "new Listview({template: 'spell', id: 'talents',") !== false && strpos(strtolower($line), '@' . $name) !== false)
+			{
+				$found = true;
+				break;
+			}
+			elseif (strpos($line, "new Listview({template: 'spell', id: 'glyphs',") !== false && strpos(strtolower($line), '@' . $name) !== false)
 			{
 				$found = true;
 				break;

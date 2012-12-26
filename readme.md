@@ -101,4 +101,6 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 	-	updated to phpBB 3.0.11 
 	-	wowhead local mode restored, power.js updated
 	-	achievement bbcode fixed, wowhead now uses htmlentities
+	-	Spells now support Glyphs 
 	-	SimplephpDom 1.5 updated to revision 202 of 10/10/2012
+	
