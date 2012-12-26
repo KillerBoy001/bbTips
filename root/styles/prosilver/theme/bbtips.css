@@ -399,13 +399,13 @@ a span.moneyitem,a span.moneysocketmeta,a span.moneysocketred,a span.moneysocket
 }
 
 .quest, .quest a:link, .quest a:active, .quest a:visited, .quest a:hover {
-	color: #0000FF !important;
+	color: #FAB008 !important;
 	text-decoration: none;
 	font-family: Verdana,sans-serif;
 }
 
 .spell, .spell a:link, .spell a:active, .spell a:visited, .spell a:hover {
-	color: navy !important;
+	color: #FAB008 !important;
 	text-decoration: none;
 	font-family: Verdana,sans-serif;
 }
@@ -424,13 +424,13 @@ a span.moneyitem,a span.moneysocketmeta,a span.moneysocketred,a span.moneysocket
 }
 
 .npc, .npc a:link, .npc a:active, .npc a:visited, .npc a:hover {
-	color: #C09E79 !important;
+	color: #FAB008 !important;
 	text-decoration: none;
 	font-family: Verdana,sans-serif;
 }
 
 .wow_profile, .wow_profile a:link, .wow_profile a:active, .wow_profile a:visited, .wow_profile a:hover {
-	color: #4679A6 !important;
+	color: #FAB008 !important;
 	text-decoration: none;
 	font-family: Verdana,sans-serif;
 }

@@ -96,15 +96,6 @@ class wowhead_spell extends wowhead
 		}
 	}
 
-	
-	/*
-	 * 
-	 */
-	
-	
-	
-	
-	
 	/**
 	* search using Dom parser
 	* 
@@ -276,36 +267,82 @@ class wowhead_spell extends wowhead
 		$name = strtolower($name);
 		foreach ($parts as $line)
 		{
-			if (strpos($line, "new Listview({template: 'spell', id: 'abilities',") !== false && strpos(strtolower($line), '@' . $name) !== false)
+			if (strpos($line, "new Listview({template: 'spell'") !== false)
 			{
-				$found = true;
-				break;
-			}
-			elseif (strpos($line, "new Listview({template: 'spell', id: 'talents',") !== false && strpos(strtolower($line), '@' . $name) !== false)
-			{
-				$found = true;
-				break;
-			}
-			elseif (strpos($line, "new Listview({template: 'spell', id: 'glyphs',") !== false && strpos(strtolower($line), '@' . $name) !== false)
-			{
-				$found = true;
-				break;
-			}
-			elseif (strpos($line, "new Listview({template: 'spell', id: 'professions',") !== false && strpos(strtolower($line), '@' . $name) !== false)
-			{
-				$found = true;
-				break;
-			}
-			elseif (strpos($line, "new Listview({template: 'spell', id: 'uncategorized-spells',") !== false && strpos(strtolower($line), '@' . $name) !== false)
-			{
-				$found = true;
-				break;
-			}
-			elseif (strpos($line, "new Listview({template: 'spell', id: 'companions',") !== false && strpos(strtolower($line), '@' . $name) !== false)
-			{
-				$found = true;
-				break;	
-			}
+				if (strpos($line, "new Listview({template: 'spell', id: 'abilities',") !== false)
+				{
+					if (strpos(strtolower($line), $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'talents',") !== false)
+				{
+					if(strpos(strtolower($line),  $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'glyphs',") !== false)
+				{
+					if (strpos(strtolower($line),  $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'professions',") !== false)
+				{
+					if(strpos(strtolower($line),  $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'uncategorized-spells',") !== false)
+				{
+					if (strpos(strtolower($line), $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'guild-perks',") !== false)
+				{
+					if(strpos(strtolower($line),  $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'recipes',") !== false )
+				{
+					if(strpos(strtolower($line), $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'spells',") !== false)
+				{
+					if(strpos(strtolower($line), $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				elseif (strpos($line, "new Listview({template: 'spell', id: 'companions',") !== false)
+				{
+					if(strpos(strtolower($line), $name) !== false)
+					{
+						$found = true;
+						break;
+					}
+				}
+				
+			}	
 		}
 		
 		if ($found && sizeof($line) > 0)

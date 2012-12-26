@@ -8,6 +8,7 @@
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[bbTips 1.0.2]]></title>
 		<description lang="en"><![CDATA[
+		See Readme.md for full details
 		a BBCode Tooltip mod
 		* bbDKP compatible 
 		* WowHead-style Tooltips mod (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp)

@@ -13,7 +13,7 @@ BBcodes get installed automatically on your Board
 
 `[item gems="40133" enchant="3825"]50468[/item]`
 
-#######PTR usage
+######PTR usage
 You can prefix the tags with "ptr" to access the Wowhead Public Test Realm database.
 
 Example for PTR 4.2
@@ -31,8 +31,6 @@ Example for PTR 4.2
 `[itemico gems="40133" enchant="3825" size=medium]Ardent Guard[/itemico]`
 
 `[itemico gems="40133" enchant="3825" size=large]Ardent Guard[/itemico]`
-
-PTR
 
 ###Itemset
 
@@ -55,13 +53,24 @@ As of Wow 4.0, the spell ranks were removed. Existing spell tags with spell rank
 `[spell]Power Word: Shield[/spell]`
 `[spell]Master of Beasts[/spell]`
 
-Quests
+in bbTips 1.0.2, recipes, guild perks and Glyph spells can be used.
+
+`[spell]Weak Troll's Blood Elixir[/spell]`
+`[spell]Mr. Popularity[/spell]`
+`[]spell]Glyph of Barkskin[/spell]`
+
+###Quests
 
 `[quest]A Dire Situation[/quest]`
 
-NPC bbCode
+###NPC bbCode
 
+You can select any npc 
 `[npc]Illidan Stormrage[/npc]`
+
+including the new Pandaria Battle pets :
+
+`[npc]Adder[/npc]`
 
 
 ###Crafting bbcode. 
@@ -99,8 +108,9 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 
 -	1.0.2
 	-	updated to phpBB 3.0.11 
-	-	wowhead local mode restored, power.js updated
+	-	wowhead local.js power.js updated for local usage.
 	-	achievement bbcode fixed, wowhead now uses htmlentities
-	-	Spells now support Glyphs 
+	-	Spell bbcode now support Glyphs, Recipes and Guild-perks
 	-	SimplephpDom 1.5 updated to revision 202 of 10/10/2012
+	-	css changes : quests, spells now appear in #FAB008. 
 	
