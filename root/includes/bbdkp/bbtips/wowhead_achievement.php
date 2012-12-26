@@ -4,7 +4,7 @@
 *
 * @package bbDkp.includes
 * @version $Id $
-* @copyright 2010 bbdkp <http://code.google.com/p/bbdkp/>
+* @copyright 2010 bbdkp <https://github.com/bbdkp>
 * @author: Adam "craCkpot" Koch (admin@crackpot.us) -- 
 * @author: Sajaki (sajaki9@gmail.com)
 *
@@ -148,11 +148,12 @@ class wowhead_achievement extends wowhead
 		$html = str_get_html ($data, $lowercase = true);
 		
 		// get name from meta tag
-		$element = $html->find('meta[property=og:title]'); 
+		$element = $html->find('meta[property=og&#x3A;title]'); 
 		$achievementname = "";
 		foreach($element as $attr)
 		{
 			$achievementname = (string) $attr->getattribute('content');
+			$achievementname = html_entity_decode($achievementname);
 		}
 		
 		// get link from meta tag
@@ -160,7 +161,8 @@ class wowhead_achievement extends wowhead
 		foreach($element as $attr)
 		{
 			$achievementlink = (string) $attr->getattribute('href');
-			// content="http://www.wowhead.com/achievement=4874/breaking-out-of-tol-barad"
+			$achievementlink  = html_entity_decode($achievementlink); 
+			// target result : content="http://www.wowhead.com/achievement=4874/breaking-out-of-tol-barad"
 			$linkarray = explode("/" , $achievementlink, 5);
 			$achid = str_replace("achievement=", "", $linkarray[3])  ;
 		}
