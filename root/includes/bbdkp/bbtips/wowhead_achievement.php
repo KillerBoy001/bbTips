@@ -130,7 +130,7 @@ class wowhead_achievement extends wowhead
 	 * @param string $name
 	 * @return boolean|array NULL
 	 */
-	private function _getAchievementByName(string $name)
+	private function _getAchievementByName($name)
 	{
 		global $phpbb_root_path, $phpEx;
 		
