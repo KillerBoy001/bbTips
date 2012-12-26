@@ -4,7 +4,7 @@
 *
 * @package bbDkp.includes
 * @version $Id $
-* @copyright (c) 2010 bbDkp <http://code.google.com/p/bbdkp/> 
+* @copyright (c) 2010 bbDkp <https://github.com/bbdkp> 
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * By: Adam "craCkpot" Koch (admin@crackpot.us) -- Adapted by bbdkp Team (sajaki9@gmail.com)
 * 

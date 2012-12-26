@@ -211,6 +211,7 @@ a span.moneyitem,a span.moneysocketmeta,a span.moneysocketred,a span.moneysocket
 
 .blizzard-blue {
 	color: #00C0FF!important;
+	font-family: Arial,sans-serif;
 }
 
 
@@ -400,44 +401,51 @@ a span.moneyitem,a span.moneysocketmeta,a span.moneysocketred,a span.moneysocket
 .quest, .quest a:link, .quest a:active, .quest a:visited, .quest a:hover {
 	color: #0000FF !important;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
 }
 
 .spell, .spell a:link, .spell a:active, .spell a:visited, .spell a:hover {
 	color: navy !important;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
 }
 
-.achievement, .achievement a:link, .achievement a:active, .achievement a:visited, .achievement a:hover,
-.itemset, .itemset a:link, .itemset a:active, .itemset a:visited, .itemset a:hover {
-	color: #D53057;
+.achievement, .achievement a:link, .achievement a:active, .achievement a:visited, .achievement a:hover
+{
+	color: #FAB008;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
+}
+
+.itemset, .itemset a:link, .itemset a:active, .itemset a:visited, .itemset a:hover {
+	color: #FAB008;
+	text-decoration: none;
+	font-family: Verdana,sans-serif;
 }
 
 .npc, .npc a:link, .npc a:active, .npc a:visited, .npc a:hover {
 	color: #C09E79 !important;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
 }
 
 .wow_profile, .wow_profile a:link, .wow_profile a:active, .wow_profile a:visited, .wow_profile a:hover {
 	color: #4679A6 !important;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
 }
 
 .guild, .guild a:link, .guild a:active, .guild a:visited, .guild a:hover {
 	color: #099F2C !important;
 	text-decoration: none;
-	font-weight: bold;
+	font-family: Verdana,sans-serif;
 }
 
 
 .armory, .armory a:link, .armory a:active, .armory a:visited, .armory a:hover {
 	color: #CFA60C;
 	text-decoration: none;
+	font-family: Verdana,sans-serif;
 }
 
 
@@ -528,6 +536,7 @@ a span.moneyitem,a span.moneysocketmeta,a span.moneysocketred,a span.moneysocket
 .itemname {
 	display: inline;
 	clear: left;
+	font-family: Arial,sans-serif;
 }
 
 .iconsmall a:hover {

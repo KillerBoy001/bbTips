@@ -446,7 +446,7 @@ class wowhead
 				trigger_error('curl_init Failed' , E_USER_WARNING);   
 			}
 			
-			$useragent = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9) Gecko/2008061004 Firefox/3.0';
+			$useragent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:17.0) Gecko/20100101 Firefox/17.0';
 			//$useragent='Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9) Gecko/2008052906 Firefox/3.0';
 			//$useragent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) Gecko/20070319 Firefox/2.0.0.3";
 			@curl_setopt ( $curl, CURLOPT_USERAGENT, $useragent );

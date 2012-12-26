@@ -125,10 +125,12 @@ class wowhead_achievement extends wowhead
 	}
 
 	/**
-	* Queries Wowhead for Achievement by Name
-	* @access private
-	**/
-	private function _getAchievementByName($name)
+	 * Wowhead source parser Achievement by Name
+	 * 
+	 * @param string $name
+	 * @return boolean|array NULL
+	 */
+	private function _getAchievementByName(string $name)
 	{
 		global $phpbb_root_path, $phpEx;
 		
