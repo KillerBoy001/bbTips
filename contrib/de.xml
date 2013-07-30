@@ -5,11 +5,41 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<meta name="generator" content="Phpbb.ModTeam.Tools (c#)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<author-group/>
+		<title lang="en"><![CDATA[bbDKP Tooltips Plugin 1.0.2]]></title>
+		<description lang="en"><![CDATA[German languagefiles]]></description>
+		<description lang="de"><![CDATA[Deutsche Sprachdateien]]></description>
+		<author-notes lang="en"><![CDATA[German language files]]></author-notes>
+		<author-notes lang="de"><![CDATA[Deutsche Sprachdateien]]></author-notes>
+		<author-group>
+			<author>
+				<realname><![CDATA[Sajaki]]></realname>
+				<username><![CDATA[Sajaki]]></username>
+				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
+				<email><![CDATA[sajaki9@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="current" from="2009-01-01" position="Project leader"/>
+					<contributions status="past" from="2008-04-04" to="2009-01-01" position="Developer"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.0.3</mod-version>
 		<installation>
 			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.11</target-version>
 		</installation>
+		<link-group>
+			<link type="parent" href="../install.xml" lang="en">Installation manual</link>
+			<link type="parent" href="../install.xml" lang="de">Installationshinweise</link>
+		</link-group>
 	</header>
-	<action-group/>
+	<action-group>
+		<copy>
+			<file from="root/language/de/mods/*.*" to="language/de/mods/*.*"/>
+		</copy>
+		<diy-instructions lang="en"><![CDATA[See general install.xml file]]></diy-instructions>
+		<diy-instructions lang="de"><![CDATA[siehe install.xml]]></diy-instructions>
+	</action-group>
 </mod>
