@@ -1,4 +1,5 @@
-![alt text](http://www.bbdkp.com/logo.png "logo")
+![alt text](http://www.bbdkp.com/logo.png)
+
 #bbTips v1.0.3
 
 a BBCode Tooltip mod compatible with bbDKP. can also be installed as a standalone mod
@@ -25,7 +26,7 @@ Example for PTR 4.2
  
 ####Item icon
  
-`[itemico gems="40133" enchant="3825"]50468[/item]`
+`[itemico gems="40133" enchant="3825"]50468[/itemico]`
 
 `[itemico gems="40133" enchant="3825" size=small]Ardent Guard[/itemico]`
 
