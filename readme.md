@@ -1,6 +1,8 @@
 ![alt text](http://www.bbdkp.com/logo.png)
 
-#bbTips v1.0.3
+#bbTips v1.1
+
+This version is compatible with bbDKP 1.3
 
 a BBCode Tooltip mod compatible with bbDKP. can also be installed as a standalone mod
 
@@ -102,7 +104,7 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 
 ### Requirements
 *	phpBB 3.0.11
-*	(optional) bbDKP 1.2.7 or higher with Wow installed
+*	(optional) bbDKP 1.3.0 or higher
 
 
 ### Changelog

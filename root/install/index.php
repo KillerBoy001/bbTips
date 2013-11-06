@@ -247,7 +247,9 @@ $versions = array(
     '1.0.3' => array(
     	//no db changes
      ), 
-               
+    '1.1' => array(
+    	//no db changes
+     ),                
 );
 
 // Include the UMIF Auto file and everything else will be handled automatically.
