@@ -1,10 +1,8 @@
-![alt text](http://www.bbdkp.com/logo.png)
+[![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
 
 #bbTips v1.1
 
-This version is compatible with bbDKP 1.3
-
-a BBCode Tooltip mod compatible with bbDKP. can also be installed as a standalone mod
+BBCode Tooltip mod. 
 
 WowHead-style Tooltips (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp with PTR support.
 
@@ -57,7 +55,7 @@ As of Wow 4.0, the spell ranks were removed. Existing spell tags with spell rank
 `[spell]Power Word: Shield[/spell]`
 `[spell]Master of Beasts[/spell]`
 
-in bbTips 1.0.3, recipes, guild perks and Glyph spells can be used.
+in bbTips 1.1, recipes, guild perks and Glyph spells can be used.
 
 `[spell]Weak Troll's Blood Elixir[/spell]`
 `[spell]Mr. Popularity[/spell]`
@@ -92,9 +90,17 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 
 `[craft mats]Recipe: Vial of the Sands[/craft]`
 
+## Current
+v1.1
 
+## Installation
 
-### Installation
+#### Requirements
+1.	phpbb 3.0.12 
+2.	bbDKP 1.3.0 or higher
+3.	ftp and founder admin access on your phpbb installation.
+
+#### MODX installation
 *	If you have a previous bbTips, first uninstall it with Automod.
 * 	Unzip the zip file into /store/mods
 * 	Launch automod, choose the install link. this will copy all the files, perform the necessary edits.
@@ -102,13 +108,10 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 *	Once installed, you will find the ACP module added under the raid section in bbdkp ACP.
 
 
-### Requirements
-*	phpBB 3.0.11
-*	(optional) bbDKP 1.3.0 or higher
-
-
-### Changelog
-
+## Changelog
+-	2014-01-19 : 1.1
+	-	compatible with bbDKP 1.3.0
+	
 -	2013-07-30 : 1.0.3
 	-	repaired xml install files
 
@@ -190,3 +193,22 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 		
 -	2009-12-21 : 0.1-initial release<br />
 	-	[CHANGE] The former Itemstats has been merged with wowarmory tooltips
+
+## License
+
+[GNU General Public License v2](http://opensource.org/licenses/gpl-2.0.php)
+
+This application is opensource software released under the GPL. Please see source code and the docs directory for more details. Powered by bbDkp (c) 2009 The bbDkp Project
+If you use this software and find it to be useful, we ask that you retain the copyright notice below. While not required for free use, it will help build interest in the bbDkp project and is required for obtaining support.
+bbDKP (c) 2008, 2009 Sajaki, Malfate, Kapli, Hroar
+bbDKP (c) 2007 Ippeh, Teksonic, Monkeytech, DWKN
+EQDkp (c) 2003 The EqDkp Project Team 
+
+## Credits
+Blazeflack and Twizted, for their work and support on the Apply plugin. 
+
+## Paypal donation
+
+[![Foo](https://www.paypal.com/en_US/BE/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=sajaki9%40gmail%2ecom&lc=BE&item_name=bbDKP%20Guild%20management&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+
