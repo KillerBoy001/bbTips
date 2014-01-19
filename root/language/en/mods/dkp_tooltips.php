@@ -6,7 +6,7 @@
  * @copyright 2009 bbdkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
- * 
+ *
  */
 
 /**
@@ -45,41 +45,43 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 
 // installer
-'UMIL_BBCODE_ADDED' => 'Added bbcodes', 
-'UMIL_BBCODE_REMOVED' => 'Removed bbcodes', 
+'UMIL_BBCODE_ADDED' => 'Added bbcodes',
+'UMIL_BBCODE_REMOVED' => 'Removed bbcodes',
 
 'ACP_BBTOOLTIPS' => 'Popup Configuration',
-'BBTOOLTIPS' => 'bbTips', 
-'BBTOOLTIPS_EXPLAIN' => 'Tooltips from Wowhead', 
+'BBTOOLTIPS' => 'bbTips',
+'BBTOOLTIPS_EXPLAIN' => 'Tooltips from Wowhead',
 
-'BBTIPS_SETTING' => 'Tooltip Settings', 
+'BBTIPS_SETTING' => 'Tooltip Settings',
 'BBTIPS_MAXPARSE' => 'Maximum Parsing',
-'BBTIPS_MAXPARSE_EXPLAIN' => 'Maximum number of bbcode parsing on a given page. Setting this to 0 (unlimited) or too high (>200) may cause excessive load times which will cause PHP execution to timeout.', 
+'BBTIPS_MAXPARSE_EXPLAIN' => 'Maximum number of bbcode parsing on a given page. Setting this to 0 (unlimited) or too high (>200) may cause excessive load times which will cause PHP execution to timeout.',
 
 'ITEM' => 'Install Wowhead Item  Tooltip bbCode',
 'ITEMICO' =>  'Install Wowhead Item icon Tooltip bbCode',
-'ITEMDKP' =>  'Install ItemDkp Tooltip bbCode', 
+'ITEMDKP' =>  'Install ItemDkp Tooltip bbCode',
 'ITEMSET' =>  'Install ItemSet bbCode',
 'CRAFT' => 'Install Wowhead Craftables Tooltip bbCode',
-'QUEST' => 'Install Wow	head Quest Tooltip bbCode', 
-'SPELL' => 'Install Wowhead Spell Tooltip bbCode', 
+'QUEST' => 'Install Wow	head Quest Tooltip bbCode',
+'SPELL' => 'Install Wowhead Spell Tooltip bbCode',
 'NPC' => 'Install NPC Tooltip bbCode',
-'ACHIEVEMENT' => 'Install Wowhead Achievement Tooltip bbCode', 
-'CHARACTER' =>  'Install Warcraft character Overlay bbCode', 
+'ACHIEVEMENT' => 'Install Wowhead Achievement Tooltip bbCode',
+'CHARACTER' =>  'Install Warcraft character Overlay bbCode',
 
-'BBTOOLTIPS_LOCALJS' => 'Remote wowheadscript', 
-'BBTOOLTIPS_LOCALJS_EXPLAIN' => 'Setting this to \'no\' will speed up pageloads. ', 
+'BBTOOLTIPS_LOCALJS' => 'Remote wowheadscript',
+'BBTOOLTIPS_LOCALJS_EXPLAIN' => 'Setting this to \'no\' will speed up pageloads. ',
 'BBTOOLTIPS_LANG' => 'Tooltips Language',
-'BBTOOLTIPS_LANG_EXPLAIN' => 'bbtips will show tooltips in the language you choose.', 
+'BBTOOLTIPS_LANG_EXPLAIN' => 'bbtips will show tooltips in the language you choose.',
 
-'BBTOOLTIPS_ARM' => 'Armory tooltip defaults', 
-'BBTOOLTIPS_REG' => 'Armory Region', 
-'BBTOOLTIPS_REA' => 'Realm', 
+'BBTOOLTIPS_ARM' => 'Armory tooltip defaults',
+'BBTOOLTIPS_REG' => 'Armory Region',
+'BBTOOLTIPS_REA' => 'Realm',
 
 'ITEMNOTFOUND' => '%s "%s" was not found',
 'INSERTFAILED' => 'Failed to insert %s in the cache.',
-'BBTOOLTIPS_SETTINGSAVED' => 'BBTips settings saved', 
+'BBTOOLTIPS_SETTINGSAVED' => 'BBTips settings saved',
 'CREATED_BY' => 'Created by',
+'BBTIPS_UNINSTALL_MOD'  => 'bbtips uninstalled',
+'BBTIPS_INSTALL_MOD'  => 'bbtips installed'
 
 ));
 

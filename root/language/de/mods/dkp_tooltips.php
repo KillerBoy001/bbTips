@@ -79,6 +79,8 @@ $lang = array_merge($lang, array(
 	'ITEMNOTFOUND' => '%s "%s" wurde nicht gefunden',
 	'INSERTFAILED' => 'Einführung von %s in die Datenbank gescheitert.',
 	'BBTOOLTIPS_SETTINGSAVED' => 'BBTips einstellungen gespeichert', 
+	'BBTIPS_UNINSTALL_MOD'  => 'bbtips uninstalled',
+	'BBTIPS_INSTALL_MOD'  => 'bbtips installed'
 
 ));
 

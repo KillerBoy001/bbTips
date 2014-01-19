@@ -49,7 +49,7 @@ $mod_name = 'bbTips';
 * The name of the config variable which will hold the currently installed version
 * You do not need to set this yourself, UMIL will handle setting and updating the version itself.
 */
-$version_config_name = 'bbtips_version';
+$version_config_name = 'bbdkp_plugin_bbtips_version';
 
 /*
 * The language file which will be included when installing
@@ -246,7 +246,7 @@ $versions = array(
     	//no db changes
      ),
     '1.1' => array(
-    	'custom' => array( 'applyupdater', 'bbdkp_caches'),  //no db changes
+    	'custom' => array( 'pluginupdater', 'bbdkp_caches'),  //no db changes
      ),
 );
 
@@ -548,13 +548,13 @@ function pluginupdater($action, $version)
 									'bbdkp_copyright'  => 'bbDKP Team',
 							),
 					));
-			return array('command' => sprintf($user->lang['APPLY_UPD_MOD'], $version) , 'result' => 'SUCCESS');
+			return array('command' => sprintf($user->lang['BBTIPS_INSTALL_MOD'], $version) , 'result' => 'SUCCESS');
 			break;
 
 		case 'uninstall' :
 			$umil->db->sql_query('DELETE FROM ' . $table_prefix . "bbdkp_plugins WHERE name = 'bbtips'");
 			return array(
-					'command' => sprintf($user->lang['APPLY_UNINSTALL_MOD'], $version) ,
+					'command' => sprintf($user->lang['BBTIPS_UNINSTALL_MOD'], $version) ,
 					'result' => 'SUCCESS');
 			break;
 

@@ -9,9 +9,9 @@
 		<title lang="en"><![CDATA[bbTips 1.1]]></title>
 		<description lang="en"><![CDATA[See Readme.md for full details
 		a BBCode Tooltip mod
-		* bbDKP compatible 
+		* bbDKP compatible
 		* WowHead-style Tooltips mod (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp)
-		* example BBCode usage : 
+		* example BBCode usage :
 		 	[item gems="40133" enchant="3825"]50468[/item]
 	     	[itemico gems="40133" enchant="3825"]50468[/item]
 		 	[itemico gems="40133" enchant="3825" size=small]Ardent Guard[/itemico]
@@ -31,7 +31,7 @@
 		 	[craft mats]Recipe: Vial of the Sands[/craft]]]></description>
 		<description lang="de"><![CDATA[* BBCode für bbDKP
 		* WowHead-style Tooltips (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp)
-		* example BBCode usage : 
+		* example BBCode usage :
 			[item gems="40133" enchant="3825"]50468[/item]
 			[itemico gems="40133" enchant="3825"]50468[/item]
 			[itemico gems="40133" enchant="3825" size=small]Des ehrwürdigen Dal'Rends  hochheilige Attacke[/itemico]
@@ -43,9 +43,9 @@
 			[craft]Rezept: Zerstörungstrank[/craft]
 			[craft]Bauplan: Brille aus Hartkhorium[/craft]
 			[npc]Illidan Sturmgrimm[/npc]]]></description>
-		<description lang="fr"><![CDATA[* BBCode pour bbDKP. 
+		<description lang="fr"><![CDATA[* BBCode pour bbDKP.
 		* WowHead-style Tooltips (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp)
-		* example BBCode usage : 
+		* example BBCode usage :
 			[item gems="40133" enchant="3825"]50468[/item]
 			[itemico gems="40133" enchant="3825"]50468[/item]
 			[itemico gems="40133" enchant="3825" size=small]Garde ardente[/itemico]
@@ -58,13 +58,13 @@
 			[craft]Recette : Potion de destruction[/craft]
 			[craft]Schéma : Lunettes en khorium durci[/craft]
 			[npc]Illidan Hurlorage[/npc]]]></description>
-		<author-notes lang="en"><![CDATA[Requirements : phpBB3 v3.0.x, PHP 5.2 with Libxml 2.6.0 (simplexml usage), Curl 
+		<author-notes lang="en"><![CDATA[Requirements : phpBB3 v3.0.x, PHP 5.2 with Libxml 2.6.0 (simplexml usage), Curl
 
 If you install without bbDKP then the ACP is created under the .MODS tab, otherwise it is in the bbDKP Raids ACP. Please read docs\INSTALL.html before beginning.]]></author-notes>
-		<author-notes lang="fr"><![CDATA[Requis : phpBB3 v3.0.x, PHP 5.2 avec Libxml 2.6.0 (simplexml), Curl 
+		<author-notes lang="fr"><![CDATA[Requis : phpBB3 v3.0.x, PHP 5.2 avec Libxml 2.6.0 (simplexml), Curl
 
 Veuillez lire docs\INSTALL.html avant de commencer]]></author-notes>
-		<author-notes lang="de"><![CDATA[Benötigt : phpBB3 v3.0.x, PHP 5.2 mit Libxml 2.6.0 (simplexml), Curl 
+		<author-notes lang="de"><![CDATA[Benötigt : phpBB3 v3.0.x, PHP 5.2 mit Libxml 2.6.0 (simplexml), Curl
 
 Bitte lesen sie docs\INSTALL.html bevor.]]></author-notes>
 		<author-group>
@@ -95,7 +95,6 @@ Bitte lesen sie docs\INSTALL.html bevor.]]></author-notes>
 			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
 			<file from="root/includes/bbdkp/bbtips/*.*" to="includes/bbdkp/bbtips/*.*"/>
 			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>
-			<file from="root/includes/acp/info/*.*" to="includes/acp/info/*.*"/>
 			<file from="root/includes/bbdkp/bbtips/*.*" to="includes/bbdkp/bbtips/*.*"/>
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
@@ -172,12 +171,12 @@ define('BBTIPS_NPC_TBL', $table_prefix . 'bbtips_wowhead_npc');								// npc ta
 				<find><![CDATA[$text = str_replace(array("\n", "\r"), array('<br />', "\n"), $text);]]></find>
 				<action type="after-add"><![CDATA[// bbTips
         global $phpbb_root_path, $phpEx;
-		if (!class_exists('bbtips')) 
+		if (!class_exists('bbtips'))
 		{
-			require($phpbb_root_path . 'includes/bbdkp/bbtips/parse.' . $phpEx); 
+			require($phpbb_root_path . 'includes/bbdkp/bbtips/parse.' . $phpEx);
 		}
 		$bbtips = new bbtips;
-		$text = $bbtips->parse($text); 
+		$text = $bbtips->parse($text);
 ]]></action>
 			</edit>
 		</open>
@@ -190,7 +189,7 @@ define('BBTIPS_NPC_TBL', $table_prefix . 'bbtips_wowhead_npc');								// npc ta
 		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Browse to install/index.php]]></diy-instructions>
-		<diy-instructions lang="de"><![CDATA[Rufe install/index.php auf und führe den Installer aus. Dies macht entweder eine Vollinstallation 
+		<diy-instructions lang="de"><![CDATA[Rufe install/index.php auf und führe den Installer aus. Dies macht entweder eine Vollinstallation
 oder eine Aktualisierung.]]></diy-instructions>
 		<diy-instructions lang="fr"><![CDATA[Surfez vers install/index.php et lancez l’installateur/mise à jour]]></diy-instructions>
 	</action-group>
