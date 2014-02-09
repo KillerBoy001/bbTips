@@ -100,7 +100,6 @@ Bitte lesen sie docs\INSTALL.html bevor.]]></author-notes>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
 			<file from="root/styles/prosilver/template/bbtips/*.*" to="styles/prosilver/template/bbtips/*.*"/>
 			<file from="root/styles/prosilver/theme/*.*" to="styles/prosilver/theme/*.*"/>
-			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
 		<open src="/adm/style/overall_header.html">
 			<edit>
