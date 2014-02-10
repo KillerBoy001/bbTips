@@ -15,32 +15,28 @@ if (!defined('IN_PHPBB'))
 {
 	exit;
 }
-	 
+
 /**
-* Wowhead Base Class
-*
-**/
-class wowhead
+ * Wowhead Base Class
+ *
+ */
+abstract class wowhead
 {
-	public $patterns; 
-	public $ptr;
-	public $built_url;
-	
-	function wowhead()
-	{
-		global $phpEx, $phpbb_root_path;
-		
-		if (!class_exists('wowhead_patterns')) 
+    public $patterns;
+    public $ptr;
+    public $built_url;
+
+    function __construct()
+    {
+        global $phpEx, $phpbb_root_path;
+
+        if (!class_exists('wowhead_patterns'))
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx);
         }
         $this->patterns = new wowhead_patterns();
-		
-	}
+    }
 
-
-
-	
 	/**
 	 * builds search url
 	 *
@@ -195,11 +191,10 @@ class wowhead
 	* Called when object isn't found
 	* @access private
 	**/
-	public function _notFound($type, $name)
+	public function _notFound($name)
 	{
 		global $user; 
 		$user->add_lang ( array ('mods/dkp_tooltips' ));
-		//return '<span class="notfound">[' . sprintf($user->lang['ITEMNOTFOUND'], ucwords($type) , $name) . ']</span>';
 		return '<span class="notfound">' . $name . '</span>';
 	}
 

@@ -88,7 +88,7 @@ class wowhead_itemset extends wowhead
 			if (!$result)
 			{
 				// item not found 
-				return $this->_notfound($this->type, $name);
+				return $this->_notfound($name);
 			}
 			else
 			{   //insert
