@@ -1,9 +1,9 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 
+* wowhead Link Parser v3
 * @author sajaki@gmail.com
 * @package bbDkp.includes
-* @version $Id$
+* @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 **/
@@ -402,7 +402,7 @@ class wowhead
 	 * 
 	 * if the user is using php 5.1 then strip CDATA from xml
 	 */
-	private function _removeCData($xml) 
+	public function _removeCData($xml)
 	{
 	    $new_xml = NULL;
 	    preg_match_all("/\<\!\[CDATA \[(.*)\]\]\>/U", $xml, $args);
@@ -434,7 +434,6 @@ class wowhead
 		$errmsg1= '';
 		$errmsg2= '';
 		$errmsg3= '';
-		$errstrfsk='';
 		$read_phperror=false;
 		$xml_data= '';
 	    
@@ -446,9 +445,7 @@ class wowhead
 				trigger_error('curl_init Failed' , E_USER_WARNING);   
 			}
 			
-			$useragent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:17.0) Gecko/20100101 Firefox/17.0';
-			//$useragent='Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9) Gecko/2008052906 Firefox/3.0';
-			//$useragent="Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) Gecko/20070319 Firefox/2.0.0.3";
+			$useragent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:26.0) Gecko/20100101 Firefox/26.0';
 			@curl_setopt ( $curl, CURLOPT_USERAGENT, $useragent );
 
 			@curl_setopt ( $curl, CURLOPT_URL, $url );
@@ -482,17 +479,17 @@ class wowhead
 			
 			if (curl_errno ( $curl )) 
 			{
-				/*
-                      CURLE_OK = 0,
-                      CURLE_UNSUPPORTED_PROTOCOL,     1
-                      CURLE_FAILED_INIT,              2
-                      CURLE_URL_MALFORMAT,            3
-                      CURLE_URL_MALFORMAT_USER,       4 - NOT USED
-                      CURLE_COULDNT_RESOLVE_PROXY,    5
-                      CURLE_COULDNT_RESOLVE_HOST,     6
-                      CURLE_COULDNT_CONNECT,          7
-                      CURLE_FTP_WEIRD_SERVER_REPLY,   8
-                    */
+                /*
+                  CURLE_OK = 0,
+                  CURLE_UNSUPPORTED_PROTOCOL,     1
+                  CURLE_FAILED_INIT,              2
+                  CURLE_URL_MALFORMAT,            3
+                  CURLE_URL_MALFORMAT_USER,       4 - NOT USED
+                  CURLE_COULDNT_RESOLVE_PROXY,    5
+                  CURLE_COULDNT_RESOLVE_HOST,     6
+                  CURLE_COULDNT_CONNECT,          7
+                  CURLE_FTP_WEIRD_SERVER_REPLY,   8
+                */
 				$errnum = (curl_errno ( $curl )); 
 				switch ($errnum) 
 				{
@@ -629,8 +626,5 @@ class wowhead
 		
 		return $xml_data;
 	}
-	
-	
-	
 }
 ?>

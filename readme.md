@@ -1,6 +1,6 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
 
-#bbTips v1.1
+#bbTips v1.0.4
 
 BBCode Tooltip mod. 
 
@@ -55,7 +55,7 @@ As of Wow 4.0, the spell ranks were removed. Existing spell tags with spell rank
 `[spell]Power Word: Shield[/spell]`
 `[spell]Master of Beasts[/spell]`
 
-in bbTips 1.1, recipes, guild perks and Glyph spells can be used.
+in bbTips 1.0.4, recipes, guild perks and Glyph spells can be used.
 
 `[spell]Weak Troll's Blood Elixir[/spell]`
 `[spell]Mr. Popularity[/spell]`
@@ -91,13 +91,12 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 `[craft mats]Recipe: Vial of the Sands[/craft]`
 
 ## Current
-v1.1
+v1.0.4
 
 ## Installation
 
 #### Requirements
 1.	phpbb 3.0.12 
-2.	bbDKP 1.3.0 or higher
 3.	ftp and founder admin access on your phpbb installation.
 
 #### MODX installation
@@ -109,12 +108,11 @@ v1.1
 
 
 ## Changelog
--	2014-01-19 : 1.1
+-	2014-01-19 : 1.0.4
 	-	compatible with bbDKP 1.3.0
 	
 -	2013-07-30 : 1.0.3
 	-	repaired xml install files
-
 
 -	2012-12-26 : 1.0.2
 	-	updated to phpBB 3.0.11 

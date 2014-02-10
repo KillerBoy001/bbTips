@@ -3,7 +3,7 @@
 * bbdkp-wowhead Achievement Extension
 *
 * @package bbDkp.includes
-* @version $Id $
+* @version 1.0.4
 * @copyright 2010 bbdkp <https://github.com/bbdkp>
 * @author: Adam "craCkpot" Koch (admin@crackpot.us) -- 
 * @author: Sajaki (sajaki9@gmail.com)

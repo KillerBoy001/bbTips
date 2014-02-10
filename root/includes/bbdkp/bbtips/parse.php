@@ -3,10 +3,10 @@
 * bbTips Parser 
 *
 * @package bbDkp.includes
-* @version 0.4.0 $Id $
+* @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * @copyright (c) 2010 bbdkp <https://github.com/bbdkp>
-* @author : Sajaki (sajaki@bbdkp.com)
+* @author : sajaki@bbdkp.com
 * 
 *
 * 

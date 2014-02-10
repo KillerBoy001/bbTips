@@ -3,7 +3,7 @@
 * bbdkp-wowhead Link Parser v3 - Pattern Class
 *
 * @package bbDkp.includes
-* @version $Id $
+* @version 1.0.4
 * @Copyright (c) 2008 Adam Koch
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *

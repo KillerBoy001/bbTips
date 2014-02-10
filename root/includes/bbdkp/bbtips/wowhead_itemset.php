@@ -3,7 +3,7 @@
 * bbdkp-wowhead Link Parser v3 - Itemset Icon Extension
 *
 * @package bbDkp.includes
-* @version $Id $
+* @version 1.0.4
 * @copyright (c) 2010 bbDkp <https://github.com/bbdkp> 
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * By: Adam "craCkpot" Koch (admin@crackpot.us) -- Adapted by bbdkp Team (sajaki9@gmail.com)

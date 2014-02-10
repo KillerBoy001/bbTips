@@ -1,12 +1,12 @@
 <?php
 /**
- * bbTips 1.1
+ * bbTips 1.0.4
  *
  * @package bbDkp-installer
  * @author sajaki9@gmail.com
  * @copyright (c) 2009 bbDkp https://github.com/bbDKP/bbtips
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 1.1
+ * @version 1.0.4
  *
  */
 
@@ -245,7 +245,7 @@ $versions = array(
     '1.0.3' => array(
     	//no db changes
      ),
-    '1.1' => array(
+    '1.0.4' => array(
     	'custom' => array( 'pluginupdater', 'bbdkp_caches'),  //no db changes
      ),
 );
@@ -523,7 +523,7 @@ function delete_bbcodes($action, $version, $tag)
 }
 
 /**
-* this function fills the plugin table.
+* this function fills the plugin table (if bbdkp is installed).
 *
 * @param string $action
 * @param string $version
@@ -532,6 +532,12 @@ function delete_bbcodes($action, $version, $tag)
 function pluginupdater($action, $version)
 {
 	global $db, $table_prefix, $user, $umil, $bbdkp_table_prefix, $phpbb_root_path, $phpEx;
+
+    if(! isset($config['bbdkp_version']))
+    {
+        return array('command' => sprintf($user->lang['BBTIPS_INSTALL_MOD'], $version) , 'result' => 'SUCCESS');
+    }
+
 	switch ($action)
 	{
 		case 'install' :

@@ -3,7 +3,7 @@
 * bbdkp-wowhead cache class
 *
 * @package bbDkp.includes
-* @version $Id$
+* @version 1.0.4
 * @author (c) 2009 bbDKP - Sajaki 
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *  

@@ -3,7 +3,7 @@
 * bbdkp-wowhead Link Parser v3 - Spell Extension
 *
 * @package bbDkp.includes
-* @version $Id $
+* @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * @copyright 2010 bbdkp <https://github.com/bbdkp>
 * @author: Adam "craCkpot" Koch (admin@crackpot.us) -- 

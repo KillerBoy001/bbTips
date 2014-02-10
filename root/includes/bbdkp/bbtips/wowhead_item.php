@@ -2,7 +2,7 @@
 /**
 * bbdkp-wowhead Link Parser v3 - Link Parser v3 - Item Extension
 * @package bbDkp.includes
-* @version $Id $
+* @version 1.0.4
 * @Copyright bbDKP
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *

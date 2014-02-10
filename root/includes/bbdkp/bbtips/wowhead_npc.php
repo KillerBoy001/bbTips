@@ -3,7 +3,7 @@
 * bbdkp-wowhead NPC
 * @package bbDkp.includes
 * @author sajaki9@gmail.com
-* @version $Id $
+* @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * @Copyright bbDKP
 * 
