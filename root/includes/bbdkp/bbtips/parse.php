@@ -2,7 +2,6 @@
 /**
 * bbTips Parser 
 *
-* @package bbDkp.includes
 * @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * @copyright (c) 2010 bbdkp <https://github.com/bbdkp>
@@ -32,7 +31,7 @@ class bbtips
 	    global $phpbb_root_path, $phpEx, $config;
 	    $match = array();
 	    $parses = 0;
-                	    
+
 	    //max 600 items will be parsed no matter what the setting of maxparse is set too
 		//600 will parse approximetly 8 different wowchar character profiles...
 		if (isset($config['bbtips_maxparse']))
@@ -56,7 +55,7 @@ class bbtips
 		  {
 				$args = array();
 				
-				if ( !class_exists('wowhead')) 
+				if ( !class_exists('wowhead'))
 		        {
 		        	require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead.' . $phpEx); 
 		        }

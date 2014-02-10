@@ -113,7 +113,7 @@ class wowhead_itemset extends wowhead
 			return false;
 		}
 
-		$this->make_url($id, 'itemset');
+		$this->make_searchurl($id, 'itemset');
 		$data = $this->gethtml($id, 'itemset');
 		
 		if (trim($data) == '' || empty($data)) 
@@ -166,7 +166,7 @@ class wowhead_itemset extends wowhead
 	
 	function _getItemIcon($id)
 	{
-		$this->make_url($id, 'item');
+		$this->make_searchurl($id, 'item');
 		$xml_data = $this->gethtml($id, 'item');
 			
 		libxml_use_internal_errors(true);
@@ -249,7 +249,7 @@ class wowhead_itemset extends wowhead
 			return false;
 		}
 
-		$this->make_url($name, 'itemset');
+		$this->make_searchurl($name, 'itemset');
 		$data = $this->gethtml($name, 'itemset');
 		
 		if (trim($data) == '' || empty($data)) 
@@ -260,7 +260,7 @@ class wowhead_itemset extends wowhead
 		if (preg_match('#Location: \/itemset=([\-0-9]{1,10})#s', $data, $match))
 		{
 			// since it redirected to a new page, we must pull that data
-			$this->make_url($match[1], 'itemset');
+			$this->make_searchurl($match[1], 'itemset');
 			$data = $this->gethtml($match[1], 'itemset');
 		
 			$nameline = '';
@@ -345,7 +345,7 @@ class wowhead_itemset extends wowhead
 					
 					foreach ($itemset['pieces'] as $piece)
 					{
-						$this->make_url($piece, 'item');
+						$this->make_searchurl($piece, 'item');
 						$xml_data = $this->gethtml($piece, 'item');
 			
 						libxml_use_internal_errors(true);

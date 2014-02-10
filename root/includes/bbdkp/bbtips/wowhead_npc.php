@@ -87,7 +87,7 @@ class wowhead_npc extends wowhead
 		if (!is_numeric($name))
 		{
 			
-			$this->make_url($name, 'npc');
+			$this->make_searchurl($name, 'npc');
 			$data = $this->gethtml($name, 'npc');
 			
 			// get the id of the npc
@@ -117,7 +117,7 @@ class wowhead_npc extends wowhead
 		else
 		{
 						
-			$this->make_url($name, 'npc');
+			$this->make_searchurl($name, 'npc');
 			$data = $this->gethtml($name, 'npc');
 			
 			$npc_name = $this->_getNPCNameFromID($data);

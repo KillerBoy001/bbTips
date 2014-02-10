@@ -112,7 +112,7 @@ class wowhead_quest extends wowhead
 		}
 
 		
-		$this->make_url($id, 'quest');
+		$this->make_searchurl($id, 'quest');
 		$data = $this->gethtml($id, 'quest');
 			
 		// wowhead doesn't have the info
@@ -153,7 +153,7 @@ class wowhead_quest extends wowhead
 		    return false;
 		}
 		
-		$this->make_url($name, 'quest');
+		$this->make_searchurl($name, 'quest');
 		$html = $this->gethtml($name, 'quest');
 		
 		if (!$html)

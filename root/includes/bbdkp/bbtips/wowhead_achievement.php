@@ -97,7 +97,7 @@ class wowhead_achievement extends wowhead
 		}
 
 
-		$this->make_url($id, 'achievement');
+		$this->make_searchurl($id, 'achievement');
 		$data = $this->gethtml($id, 'achievement');
 
 		if ($data == '$WowheadPower.registerAchievement(1337, 25, {});')
@@ -139,7 +139,7 @@ class wowhead_achievement extends wowhead
 			return false;
 		}
 
-		$this->make_url($name, 'achievement');
+		$this->make_searchurl($name, 'achievement');
 		$data = $this->gethtml($name, 'achievement');
 		
 		if ( !class_exists('simple_html_dom_node')) 

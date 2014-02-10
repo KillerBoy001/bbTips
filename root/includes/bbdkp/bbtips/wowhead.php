@@ -37,6 +37,9 @@ class wowhead
         $this->patterns = new wowhead_patterns();
 		
 	}
+
+
+
 	
 	/**
 	 * builds search url
@@ -44,7 +47,7 @@ class wowhead
 	 * @param string $name
 	 * @param string $type
 	 */
-	public function make_url($name, $type = 'item')
+	public function make_searchurl($name, $type = 'item')
 	{
 		
 		$domain =  $this->_getDomain(); 
@@ -92,17 +95,9 @@ class wowhead
 			case 'ptritem':      
 		    case 'ptritemico':   
 		    case 'ptritemdkp':
-		   		if(is_numeric($name))
-				{	
 					$this->built_url = $domain . '/item=' . $this->_convert_string($name) . '&xml';
-				
-				}
-				else 
-				{
 					//use search and parse page
-					$this->built_url = $domain . '/search?q=' . $this->_convert_string($name);
-				
-				}
+					//$this->built_url = $domain . '/search?q=' . $this->_convert_string($name);
 				break;
 			case 'craftable':
 			case 'ptrcraftable':				
@@ -136,8 +131,9 @@ class wowhead
 			case 'achievement':
 			case 'ptrspell':
 			case 'ptrquest':  
-			case 'ptrachievement':	
-				$html_data = $this->_read_php($this->built_url, 1, 0 );
+			case 'ptrachievement':
+                //use search and parse page
+                $html_data = $this->_read_php($this->built_url, 1, 0 );
 				break;
 			case 'item':      
 		    case 'itemico':   
@@ -145,16 +141,8 @@ class wowhead
 			case 'ptritem':      
 		    case 'ptritemico':   
 		    case 'ptritemdkp':
-		   		if(is_numeric($name))
-				{	
-				
-					$html_data = $this->_read_php($this->built_url, 0, 0 );
-				}
-				else 
-				{
-					//use search and parse page
-					$html_data = $this->_read_php($this->built_url, 1, 0 );
-				}
+                //fetch xml, don't get the headers
+				$html_data = $this->_read_php($this->built_url, 0, 0 );
 				break;
 			case 'craftable':
 			case 'ptrcraftable':				
@@ -227,7 +215,7 @@ class wowhead
 			return false;
 		}
 
-        $this->make_url($name, 'gem');
+        $this->make_searchurl($name, 'gem');
 		$data = $this->gethtml($name, 'gem');
 		
 		if (empty($data)) 

@@ -84,7 +84,7 @@ class wowhead_craft extends wowhead
 		{
 			// not in db, get html
 			
-			$this->make_url($name, 'craftable');
+			$this->make_searchurl($name, 'craftable');
 			$data = $this->gethtml($name, 'craftable');
 
 			if ($this->_useSimpleXML())

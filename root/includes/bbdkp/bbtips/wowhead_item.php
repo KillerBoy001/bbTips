@@ -93,13 +93,11 @@ class wowhead_item extends wowhead
 		// check if its already in the cache
 		if (!$result = $cache->getObject($name, $this->type, $this->lang, '', $this->size))
 		{
-			//not in db so call wowhead
-			if(is_numeric($name))
-			{
-				//xmlsearch
-				$result = $this->_getItembyID($name);
-			}
-			else 
+            //xmlsearch
+            $result = $this->_getItembyXML($name);
+
+			//if no result, try scraping json
+			if(!$result )
 			{
 				//json search
 				$result = $this->_getItemByName($name);
@@ -114,8 +112,7 @@ class wowhead_item extends wowhead
 					}
 				}
 			}
-			
-			
+
 			if (!$result)
 			{
 				// item not found 
@@ -231,20 +228,13 @@ class wowhead_item extends wowhead
 	}
 
 	/**
-	* Queries Wowhead for Item id
+	* Queries Wowhead by xml
 	* @access private
 	**/
-	private function _getItembyID($id, $search='')
+	private function _getItembyXML($id, $search='')
 	{
-		
-		$id = (int) $id;
-		if ($id == 0)
-		{
-			return false;
-		}
-		
-		$this->make_url($id, 'craftable');
-		$data = $this->gethtml($id, 'craftable');
+		$this->make_searchurl($id, 'item');
+		$data = $this->gethtml($id, 'item');
 
 		if (trim($data) == '' || empty($data)) 
 		{ 
@@ -321,25 +311,33 @@ class wowhead_item extends wowhead
 	
 	private function _getItemByName($name)
 	{
+        $item='';
+
 		if (trim($name) == '')
 		{
 			return false;
 		}
 
-		$this->make_url($name, 'item');
+		$this->make_searchurl($name, 'item');
 		$data = $this->gethtml($name, 'item');
 				
 		if (!$data)
 		{
-			return false;
+			$item="";
 		}
 		
 		// for searches with only one result (aka redirect header)
 		// example http://www.wowhead.com/search?q=Blighted Leggings
 		if (preg_match('#Location: \/item=([0-9]{1,10})#s', $data, $match))
 		{
-			return $this->_getItembyID($match[1], $name);
+            $item = $this->_getItembyXML($match[1], $name);
 		}
+
+        if($item=='');
+        {
+            //try the
+        }
+
 		
 		// lots of results, so read the 
 		$line = $this->_itemLine($data);
@@ -372,7 +370,7 @@ class wowhead_item extends wowhead
 				
 				if (strtolower(stripslashes($item['name'])) == strtolower(stripslashes($name)))
 				{
-					return $this->_getItembyID($item['id'], $name);
+					return $this->_getItembyXML($item['id'], $name);
 				}
 			}
 			return false;
