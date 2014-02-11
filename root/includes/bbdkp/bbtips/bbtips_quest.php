@@ -1,12 +1,11 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 - Quest Extension
-*
-* @package bbDkp.includes
-* @Copyright bbDKP
-* @version 1.0.4
-* @author sajaki9@gmail.com
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * Wowhead quest  parser
+ *
+ * @version 1.0.4
+ * @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Sajaki (sajaki9@gmail.com)
 * 
 **/
 
@@ -18,24 +17,21 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-class wowhead_quest extends wowhead
+
+/**
+ * Class bbtips_quest
+ *
+ *
+ * usage : [quest]A Dire Situation[/quest]
+ *
+ *
+ */
+class bbtips_quest extends bbtips
 {
 	public $lang;
 	public $patterns;
 	private $args = array();
-		
-	public function wowhead_quest($arguments = array())
-	{
-		global $phpEx, $config, $phpbb_root_path; 
-		
-		if (!class_exists('wowhead_patterns')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->patterns = new wowhead_patterns();
-        $this->args = $arguments;
-		$this->lang = $config['bbtips_lang'];
-	}
+
 
 	public function parse($name)
 	{

@@ -1,31 +1,10 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 - Link Parser v3 - Item Extension
-* @package bbDkp.includes
+* Wowhead Item name parser
 * @version 1.0.4
-* @Copyright bbDKP
+* @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
-* 
-* Syntax
-* [item {parameters}]{name or ID}[/item]
-* [itemico {parameters}]{name or ID}[/itemico]
-* [itemdkp {parameters}]{name or ID}[/itemdkp]
-* [ptritem {parameters}]{name or ID}[/ptritem]
-* [ptritemico {parameters}]{name or ID}[/ptritemico]
-* [ptritemdkp {parameters}]{name or ID}[/ptritemdkp]
-* 
-* parameters can be gems or enchant
-* itemico has extra size parameter
-* 
-* example usage
-* [item gems="40133" enchant="3825"]50468[/item]
-* [itemico gems="40133" enchant="3825"]50468[/item]
-* [itemico gems="40133" enchant="3825" size=small]Ardent Guard[/itemico]
-* [itemico gems="40133" enchant="3825" size=medium]Ardent Guard[/itemico]
-* [itemico gems="40133" enchant="3825" size=large]Ardent Guard[/itemico]
-*
-**/
+*/
 
 /**
 * @ignore
@@ -36,26 +15,43 @@ if (!defined('IN_PHPBB'))
 }
 
 /**
- * handles creation of item tooltips
+ * Class bbtips_item
+ *
+ * handles creation of item tooltips from the item text.
+ *
+ * Syntax
+ * [item {parameters}]{name or ID}[/item]
+ * [itemico {parameters}]{name or ID}[/itemico]
+ * [itemdkp {parameters}]{name or ID}[/itemdkp]
+ * [ptritem {parameters}]{name or ID}[/ptritem]
+ * [ptritemico {parameters}]{name or ID}[/ptritemico]
+ * [ptritemdkp {parameters}]{name or ID}[/ptritemdkp]
+ *
+ * parameters can be gems or enchant
+ * itemico has extra size parameter
+ *
+ * example usage
+ * [item gems="40133" enchant="3825"]50468[/item]
+ * [itemico gems="40133" enchant="3825"]50468[/item]
+ * [itemico gems="40133" enchant="3825" size=small]Ardent Guard[/itemico]
+ * [itemico gems="40133" enchant="3825" size=medium]Ardent Guard[/itemico]
+ * [itemico gems="40133" enchant="3825" size=large]Ardent Guard[/itemico]
  *
  */
-class wowhead_item extends wowhead
+class bbtips_item extends bbtips
 {
-	public $lang;
-	public $patterns;
-	public $type; 
+	public $type;
 	public $size;
 	public $itemid;
 	public $name;
 	public $search_name;
 	public $icon;
 	public $quality;
-	public $args = array();
 
 	/*
 	 * $bbcode : either 'item' or 'itemico' or 'itemdkp'
 	 */
-	public function wowhead_item($bbcode, $argin = array())
+	public function bbtips_item($bbcode, $argin = array())
 	{
 		global $phpEx, $phpbb_root_path, $config; 
 		

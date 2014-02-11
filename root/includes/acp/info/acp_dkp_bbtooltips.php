@@ -5,7 +5,7 @@
 * @package bbDkp.acp
 * @author sajaki9@gmail.com
 * @version 1.0.4
-* @copyright (c) 2009 bbdkp http://code.google.com/p/bbdkp/
+* @copyright (c) 2009 bbdkp https://github.com/bbDKP/bbTips
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * 
 */

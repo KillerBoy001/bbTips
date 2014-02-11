@@ -1,17 +1,11 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 - Craftable Extension
-* @package bbDkp.includes
+* wowhead Craftable parser
+*
 * @version 1.0.4
-* @Copyright (c) 2008 Adam Koch
+* @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
-* syntax
-* [craft {parameters}]{id or name}[/craft]
-* parameters : nomats will 
-* example usage
-* [craft nomats]Battlelord's Plate Boots[/craft]
-* 
 **/
 
 /**
@@ -22,36 +16,24 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-class wowhead_craft extends wowhead
+/**
+ * Class bbtips_craft
+ *
+ * syntax
+ * [craft {parameters}]{id or name}[/craft]
+ * parameters : nomats will
+ * example usage
+ * [craft nomats]Battlelord's Plate Boots[/craft]
+ *
+ */
+class bbtips_craft extends bbtips
 {
-	public $lang;
+
 	private $createdby = array();
-	
-	/**
-	 * the formula
-	 *
-	 * @var array
-	 */
 	private $craft_recipe = array();
 	private $craft = array();
 	private $craft_reagents = array();
-	public 	$patterns;
 	private $mats = false;
-	private $args = array();
-
-	public function wowhead_craft($craftargs)
-	{
-		global $phpEx, $phpbb_root_path, $config; 
-		
-		if (!class_exists('wowhead_patterns')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->args = $craftargs;
-        $this->patterns = new wowhead_patterns();
-		$this->lang = $config['bbtips_lang'];
-
-	}
 
 	/**
 	 * parser
@@ -189,12 +171,12 @@ class wowhead_craft extends wowhead
 					 						$this->craft_reagents[$reagents]['reagentof'] = (int) $prid;
 					 						$this->craft_reagents[$reagents]['quantity'] = 1;
 					 						
-					 						if ( !class_exists('wowhead_item')) 
+					 						if ( !class_exists('bbtips_item'))
 							                {	                	
 							                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_item.' . $phpEx);    
 							                }
 							                $args = array();
-							                $object = new wowhead_item($this->craft_reagents[$reagents]['itemid'], $args);
+							                $object = new bbtips_item($this->craft_reagents[$reagents]['itemid'], $args);
 							                $object->parse(trim($this->craft_reagents[$reagents]['itemid']));
 					 						$this->craft_reagents[$reagents]['quality'] =  $object->quality;
 					 						$this->craft_reagents[$reagents]['icon'] = $object->icon;

@@ -1,8 +1,8 @@
 <?php
 /**
-* wowhead Link Parser v3
+* wowhead Link Parser
 * @author sajaki@gmail.com
-* @package bbDkp.includes
+* @copyright (c) 2009 bbdkp https://github.com/bbDKP/bbTips
 * @version 1.0.4
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -20,20 +20,25 @@ if (!defined('IN_PHPBB'))
  * Wowhead Base Class
  *
  */
-abstract class wowhead
+abstract class bbtips
 {
-    public $patterns;
+
     public $ptr;
     public $built_url;
+    public $lang;
+    public $patterns;
+    public $args;
 
-    function __construct()
+    function __construct($arguments = array())
     {
-        global $phpEx, $phpbb_root_path;
+        global $config, $phpEx, $phpbb_root_path;
 
         if (!class_exists('wowhead_patterns'))
         {
             require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx);
         }
+        $this->args = $arguments;
+        $this->lang = $config['bbtips_lang'];
         $this->patterns = new wowhead_patterns();
     }
 

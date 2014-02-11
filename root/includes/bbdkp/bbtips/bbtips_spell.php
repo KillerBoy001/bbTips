@@ -1,18 +1,12 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 - Spell Extension
-*
-* @package bbDkp.includes
-* @version 1.0.4
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @copyright 2010 bbdkp <https://github.com/bbdkp>
-* @author: Adam "craCkpot" Koch (admin@crackpot.us) -- 
-* @author: Sajaki (sajaki9@gmail.com)
-* 
-* 
-* example
-* [spell rank=14]Power Word: Shield[/spell]
-*
+ * Wowhead spell parser
+ *
+ * @version 1.0.4
+ * @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Sajaki (sajaki9@gmail.com)
+ *
 **/
 
 
@@ -23,29 +17,21 @@ if (!defined('IN_PHPBB'))
 {
 	exit;
 }
-        
-class wowhead_spell extends wowhead
+
+/**
+ * Class bbtips_spell
+ *
+ * As of Wow 4.0, the spell ranks were removed. Existing spell tags with spell rank will ignore the rank argument.
+ * [spell]Power Word: Shield[/spell]`
+ * [spell]Master of Beasts[/spell]`
+ * in bbTips 1.0.4, recipes, guild perks and Glyph spells can be used.
+ * [spell]Weak Troll's Blood Elixir[/spell]`
+ * [spell]Mr. Popularity[/spell]`
+ * []spell]Glyph of Barkskin[/spell]`
+ *
+ */
+class bbtips_spell extends bbtips
 {
-	public $lang;
-	public $patterns; 
-	private $args = array();
-	
-	/**
-	* Constructor
-	* @access public
-	**/
-	function wowhead_spell($arguments = array())
-	{
-		global $config, $phpEx, $phpbb_root_path; 
-		
-		if (!class_exists('wowhead_patterns')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->patterns = new wowhead_patterns();
-        $this->args = $arguments;
-        $this->lang = $config['bbtips_lang'];
-	}
 
 	/**
 	* Parses information

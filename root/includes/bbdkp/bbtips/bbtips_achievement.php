@@ -1,10 +1,10 @@
 <?php
 /**
-* bbdkp-wowhead Achievement Extension
+* wowhead Achievement parser
 *
 * @package bbDkp.includes
 * @version 1.0.4
-* @copyright 2010 bbdkp <https://github.com/bbdkp>
+* @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
 * @author: Adam "craCkpot" Koch (admin@crackpot.us) -- 
 * @author: Sajaki (sajaki9@gmail.com)
 *
@@ -18,26 +18,18 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-class wowhead_achievement extends wowhead
+/**
+ * Class bbtips_achievement
+ *
+ * usage: [achievement]Breaking Out of Tol Barad[/achievement]
+ * [achievement]4874[/achievement]
+ * [ptrachievement]Explore Hyjal[/ptrachievement]
+ * [achievement]Loremaster of Outland[/achievement]
+ *
+ */
+class bbtips_achievement extends bbtips
 {
-	public $lang;
-	public $patterns;
-	private $args; 
-
-	public function wowhead_achievement($arguments = array())
-	{
-		global $config, $phpEx, $phpbb_root_path; 
-	    
-        if (!class_exists('wowhead_patterns')) 
-        {
-			require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->patterns = new wowhead_patterns();
-        $this->args = $arguments;
-		$this->lang = $config['bbtips_lang'];
-	}
-
-	public function parse($name)
+    public function parse($name)
 	{
 	    global $phpbb_root_path, $phpEx;
 	    

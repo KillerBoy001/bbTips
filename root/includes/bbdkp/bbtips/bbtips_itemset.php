@@ -1,22 +1,13 @@
 <?php
 /**
-* bbdkp-wowhead Link Parser v3 - Itemset Icon Extension
+* Wowhead Itemset parser
 *
-* @package bbDkp.includes
 * @version 1.0.4
-* @copyright (c) 2010 bbDkp <https://github.com/bbdkp> 
+* @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* By: Adam "craCkpot" Koch (admin@crackpot.us) -- Adapted by bbdkp Team (sajaki9@gmail.com)
+* @author Adam "craCkpot" Koch (admin@crackpot.us)
+* @author Sajaki (sajaki9@gmail.com)
 * 
-* Syntax
-* <code>
-* [itemset {parameters}]{name or ID}[/item]
-* </code>
-* example usage
-* <code>
-* [itemset]-259[/itemset]
-* [itemset]Sanctified Ymirjar Lord's Plate[/itemset]
-* </code>
 */
 
 /**
@@ -27,7 +18,23 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-class wowhead_itemset extends wowhead
+/**
+ * Class bbtips_itemset
+ *
+ * example usage : [itemset]Sanctified Ymirjar Lord's Plate[/itemset]
+ *
+ * * Syntax
+ * <code>
+ * [itemset {parameters}]{name or ID}[/item]
+ * </code>
+ * example usage
+ * <code>
+ * [itemset]-259[/itemset]
+ * [itemset]Sanctified Ymirjar Lord's Plate[/itemset]
+ * </code>
+ *
+ */
+class bbtips_itemset extends bbtips
 {
 	// variables
 	public $lang;
@@ -36,22 +43,6 @@ class wowhead_itemset extends wowhead
 	private $setid;
 	public $patterns; 
 	private $args;
-
-	/**
-	* Constructor
-	* @access public
-	**/
-	public function wowhead_itemset($argin)
-	{
-		global $phpEx, $config, $phpbb_root_path; 
-		if (!class_exists('wowhead_patterns')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->patterns = new wowhead_patterns();
-        $this->lang = $config['bbtips_lang'];
-        $this->args = $argin;
-	}	
 
 	/**
 	* Parses itemset bbcode

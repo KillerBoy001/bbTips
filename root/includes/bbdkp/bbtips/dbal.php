@@ -2,9 +2,9 @@
 /**
 * bbdkp-wowhead cache class
 *
-* @package bbDkp.includes
 * @version 1.0.4
-* @author (c) 2009 bbDKP - Sajaki 
+* @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
+* @author (c) 2009 bbDKP - Sajaki
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *  
 **/

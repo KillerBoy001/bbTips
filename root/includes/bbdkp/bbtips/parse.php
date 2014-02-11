@@ -55,7 +55,7 @@ class bbtips
 		  {
 				$args = array();
 				
-				if ( !class_exists('wowhead'))
+				if ( !class_exists('bbtips'))
 		        {
 		        	require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead.' . $phpEx); 
 		        }
@@ -80,59 +80,59 @@ class bbtips
 						case 'ptritem':
 						case 'ptritemico':
 						case 'ptritemdkp':
-			        		if ( !class_exists('wowhead_item')) 
+			        		if ( !class_exists('bbtips_item'))
 			                {	                	
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_item.' . $phpEx);    
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_item.' . $phpEx);
 			                }
-			                $object = new wowhead_item($match[1], $args);
+			                $object = new bbtips_item($match[1], $args);
 							break;
 						case 'craft':
 						case 'ptrcraft':						
-						    if ( !class_exists('wowhead_craft')) 
+						    if ( !class_exists('bbtips_craft'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_craft.' . $phpEx);    
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_craft.' . $phpEx);
 			                }
-			                $object = new wowhead_craft($args);
+			                $object = new bbtips_craft($args);
 							break;
 						case 'itemset':
 						case 'ptritemset':
-			        		if ( !class_exists('wowhead_itemset')) 
+			        		if ( !class_exists('bbtips_itemset'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_itemset.' . $phpEx);    
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_itemset.' . $phpEx);
 			                }
-			                $object = new wowhead_itemset($args);
+			                $object = new bbtips_itemset($args);
 							break;
 						case 'quest':
 						case 'ptrquest':						
-						    if ( !class_exists('wowhead_quest')) 
+						    if ( !class_exists('bbtips_quest'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_quest.' . $phpEx);    
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_quest.' . $phpEx);
 			                }
-			                $object = new wowhead_quest($args);
+			                $object = new bbtips_quest($args);
 							break;
 						case 'spell':
 						case 'ptrspell':
-			        		if ( !class_exists('wowhead_spell')) 
+			        		if ( !class_exists('bbtips_spell'))
 			                {
 			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_spell.' . $phpEx);    
 			                }
-			                $object = new wowhead_spell($args);
+			                $object = new bbtips_spell($args);
 							break;
 						case 'achievement':
 						case 'ptrachievement':
-			                if ( !class_exists('wowhead_achievement')) 
+			                if ( !class_exists('bbtips_achievement'))
 			                {
 			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_achievement.' . $phpEx);    
 			                }
-			                $object = new wowhead_achievement($args);
+			                $object = new bbtips_achievement($args);
 							break;
 						case 'npc':
 						case 'ptrnpc':
-			                if ( !class_exists('wowhead_npc')) 
+			                if ( !class_exists('bbtips_npc'))
 			                { 
 			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_npc.' . $phpEx);    
 			                }
-			                $object = new wowhead_npc($args);
+			                $object = new bbtips_npc($args);
 							break;
 						case 'wowchar':	
 							// uses the arguments realm and region

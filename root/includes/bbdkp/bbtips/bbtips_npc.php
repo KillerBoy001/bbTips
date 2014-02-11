@@ -1,12 +1,14 @@
 <?php
 /**
-* bbdkp-wowhead NPC
-* @package bbDkp.includes
-* @author sajaki9@gmail.com
-* @version 1.0.4
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Copyright bbDKP
-* 
+ * Wowhead npc parser
+ *
+ * @version 1.0.4
+ * @copyright (c) 2010 bbdkp https://github.com/bbDKP/bbTips
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Adam "craCkpot" Koch (admin@crackpot.us)
+ * @author Sajaki (sajaki9@gmail.com)
+ *
+ *
 **/
 
 /**
@@ -17,24 +19,21 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-class wowhead_npc extends wowhead
+/**
+ * bbtips_npc class
+ *
+ * usage:
+ * [npc]Illidan Stormrage[/npc]
+ * including the new Pandaria Battle pets :
+ * [npc]Adder[/npc]
+ *
+ */
+class bbtips_npc extends bbtips
 {
 	public $lang;
 	public $patterns;
 	private $args; 
-	
-	public function wowhead_npc($arguments = array())
-	{
-		global $phpEx, $config, $phpbb_root_path; 
-		
-		if (!class_exists('wowhead_patterns')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
-        }
-        $this->patterns = new wowhead_patterns();
-		$this->args = $arguments;
-		$this->lang = $config['bbtips_lang'];
-	}
+
 
 	public function parse($name)
 	{
@@ -213,5 +212,3 @@ class wowhead_npc extends wowhead
 	}
 	
 }
-
-?>
