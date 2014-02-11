@@ -26,7 +26,7 @@ if (empty($config['bbdkp_plugin_bbtips_version']))
     return;
 }
 
-function hook_bbtips(&$hook, $handle, $include_once = true)
+function bbtipshooks(&$hook, $handle, $include_once = true)
 {
     global $_SID, $_EXTRA_URL, $phpbb_hook, $phpbb_root_path, $phpEx;;
     global $user,$template,$forum_id,$topic_id,$post_id,$topic_data;
@@ -74,7 +74,7 @@ function hook_bbtips(&$hook, $handle, $include_once = true)
  */
 if (!$config['board_disable'])
 {
-    $phpbb_hook->register(array('template', 'display'), 'hook_bbtips');
+    $phpbb_hook->register(array('template', 'display'), 'bbtipshooks');
 }
 
 
