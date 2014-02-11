@@ -95,7 +95,6 @@ Bitte lesen sie docs\INSTALL.html bevor.]]></author-notes>
 			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
 			<file from="root/includes/bbdkp/bbtips/*.*" to="includes/bbdkp/bbtips/*.*"/>
 			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>
-			<file from="root/includes/bbdkp/bbtips/*.*" to="includes/bbdkp/bbtips/*.*"/>
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
 			<file from="root/styles/prosilver/template/bbtips/*.*" to="styles/prosilver/template/bbtips/*.*"/>
@@ -162,21 +161,6 @@ define('BBTIPS_NPC_TBL', $table_prefix . 'bbtips_wowhead_npc');								// npc ta
 				<comment lang="en"><![CDATA[Adding script selector for overall_header.html, either local wowhead js or remote]]></comment>
 				<find><![CDATA['S_USER_NEW'					=> $user->data['user_new'],]]></find>
 				<action type="after-add"><![CDATA['S_BBTIPS_REMOTE'				=> (isset($config['bbtips_localjs']) ? $config['bbtips_localjs'] : ' '),]]></action>
-			</edit>
-		</open>
-		<open src="includes/functions_content.php">
-			<edit>
-				<comment lang="en"><![CDATA[Adding wowhead parser]]></comment>
-				<find><![CDATA[$text = str_replace(array("\n", "\r"), array('<br />', "\n"), $text);]]></find>
-				<action type="after-add"><![CDATA[// bbTips
-        global $phpbb_root_path, $phpEx;
-		if (!class_exists('bbtips'))
-		{
-			require($phpbb_root_path . 'includes/bbdkp/bbtips/parse.' . $phpEx);
-		}
-		$bbtips = new bbtips;
-		$text = $bbtips->parse($text);
-]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/overall_header.html">
