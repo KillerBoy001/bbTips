@@ -57,3 +57,9 @@ function hook_bbtips(&$hook, $handle, $include_once = true)
         }
     }
 }
+
+/**
+ * Register all hooks
+ */
+
+$phpbb_hook->register(array('template', 'display'), 'hook_bbtips');
