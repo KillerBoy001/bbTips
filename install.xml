@@ -156,13 +156,6 @@ define('BBTIPS_NPC_TBL', $table_prefix . 'bbtips_wowhead_npc');								// npc ta
 ]]></action>
 			</edit>
 		</open>
-		<open src="includes/functions.php">
-			<edit>
-				<comment lang="en"><![CDATA[Adding script selector for overall_header.html, either local wowhead js or remote]]></comment>
-				<find><![CDATA['S_USER_NEW'					=> $user->data['user_new'],]]></find>
-				<action type="after-add"><![CDATA['S_BBTIPS_REMOTE'				=> (isset($config['bbtips_localjs']) ? $config['bbtips_localjs'] : ' '),]]></action>
-			</edit>
-		</open>
 		<open src="styles/prosilver/template/overall_header.html">
 			<edit>
 				<comment lang="en"><![CDATA[wowhead links prosilver]]></comment>

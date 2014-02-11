@@ -20,6 +20,11 @@ if (!defined('IN_PHPBB'))
     exit;
 }
 
+//Don't load hook if not installed.
+if (empty($config['bbdkp_plugin_bbtips_version']))
+{
+    return;
+}
 
 function hook_bbtips(&$hook, $handle, $include_once = true)
 {
@@ -42,6 +47,7 @@ function hook_bbtips(&$hook, $handle, $include_once = true)
         {
             $template->_tpldata['postrow'][$key]['MESSAGE'] = $bbtips->parse( $template->_tpldata['postrow'][$key]['MESSAGE'] );
         }
+        unset($bbtips);
     }
     else
     {
@@ -54,12 +60,21 @@ function hook_bbtips(&$hook, $handle, $include_once = true)
             }
             $bbtips = new bbtips;
             $template->_tpldata['.'][0]['PREVIEW_MESSAGE'] = $bbtips->parse( $template->_tpldata['.'][0]['PREVIEW_MESSAGE']);
+            unset($bbtips);
         }
     }
+
+    $template->assign_vars(array(
+        'S_BBTIPS_REMOTE'      =>  (isset($config['bbtips_localjs']) ? $config['bbtips_localjs'] : ' '),
+    ));
 }
 
 /**
- * Register all hooks
+ * Register all hooks if board is active
  */
+if (!$config['board_disable'])
+{
+    $phpbb_hook->register(array('template', 'display'), 'hook_bbtips');
+}
 
-$phpbb_hook->register(array('template', 'display'), 'hook_bbtips');
+
