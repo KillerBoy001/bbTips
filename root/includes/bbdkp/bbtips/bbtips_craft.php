@@ -16,6 +16,13 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
+
 /**
  * Class bbtips_craft
  *
@@ -53,7 +60,7 @@ class bbtips_craft extends bbtips
 		
 		if (!class_exists('wowhead_cache')) 
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
 		
         
@@ -69,12 +76,12 @@ class bbtips_craft extends bbtips
 			$this->make_searchurl($name, 'craftable');
 			$data = $this->gethtml($name, 'craftable');
 
-			if ($this->_useSimpleXML())
+			if ($this->UseSimpleXML())
 			{
 				// accounts for SimpleXML not being able to handle 3 parameters if you're using PHP 5.1 or below.
-				if (!$this->_allowSimpleXMLOptions())
+				if (!$this->AllowSimpleXMLOptions())
 				{
-					$data = $this->_removeCData($data);
+					$data = $this->RemoveCData($data);
 					$xml = simplexml_load_string($data, 'SimpleXMLElement');
 				}
 				else
@@ -219,7 +226,7 @@ class bbtips_craft extends bbtips
 				else
 				{
 					
-					return $this->_notfound('craftable', $name);
+					return $this->NotFound('craftable', $name);
 				}
 			}//end usesimplexml
 
@@ -297,14 +304,14 @@ class bbtips_craft extends bbtips
 		{
 			// generate spell html first
 			$spell_html = $this->patterns->pattern('craftable_spell');
-			$spell_html = str_replace('{splink}', $this->_generateLink($this->craft_recipe['recipeid'], 'item'), $spell_html);
+			$spell_html = str_replace('{splink}', $this->GenerateLink($this->craft_recipe['recipeid'], 'item'), $spell_html);
 			$spell_html = str_replace('{spname}', $this->craft_recipe['name'], $spell_html);
 			$spell_html = str_replace('{recipequality}', $this->craft_recipe['quality'], $spell_html);
 			
 			//product
 			$craft_html = $this->patterns->pattern('craftable');
 			$craft_html = str_replace('{recipe}' , $spell_html, $craft_html);
-			$craft_html = str_replace('{link}', $this->_generateLink($this->craft['itemid'], 'item'), $craft_html);
+			$craft_html = str_replace('{link}', $this->GenerateLink($this->craft['itemid'], 'item'), $craft_html);
 			$craft_html = str_replace('{qid}', $this->craft['quality'], $craft_html);
 			$craft_html = str_replace('{name}', stripslashes($this->craft['name']), $craft_html);
 			
@@ -317,7 +324,7 @@ class bbtips_craft extends bbtips
 				{
 					$patt = $this->patterns->pattern('craftable_reagents');
 					$search = array(
-						'{link}'	=>	$this->_generateLink($reagent['itemid'], 'item'),
+						'{link}'	=>	$this->GenerateLink($reagent['itemid'], 'item'),
 						'{name}'	=>	stripslashes($reagent['name']),
 						'{count}'	=>	$reagent['quantity'],
 						'{qid}'		=>	$reagent['quality'],
@@ -339,18 +346,18 @@ class bbtips_craft extends bbtips
 		{
 			$craft_html = $this->patterns->pattern('craftable_nomats');
 			//recipe
-			$craft_html = str_replace('{splink}', $this->_generateLink($this->craft_recipe['recipeid'], 'item'), $craft_html);
+			$craft_html = str_replace('{splink}', $this->GenerateLink($this->craft_recipe['recipeid'], 'item'), $craft_html);
 			$craft_html = str_replace('{recipequality}', $this->craft_recipe['quality'], $craft_html);
 			$craft_html = str_replace('{spname}', stripslashes($this->craft_recipe['name']), $craft_html);
 			//product
 			
 			if ($subclass =='Enchanting Formulae')
 			{
-				$craft_html = str_replace('{link}', $this->_generateLink($this->craft['itemid'], 'spell'), $craft_html);
+				$craft_html = str_replace('{link}', $this->GenerateLink($this->craft['itemid'], 'spell'), $craft_html);
 			}
 			else
 			{
-				$craft_html = str_replace('{link}', $this->_generateLink($this->craft['itemid'], 'item'), $craft_html);
+				$craft_html = str_replace('{link}', $this->GenerateLink($this->craft['itemid'], 'item'), $craft_html);
 			}
 			$craft_html = str_replace('{qid}', $this->craft['quality'], $craft_html);
 			$craft_html = str_replace('{name}', stripslashes($this->craft['name']), $craft_html);

@@ -19,6 +19,13 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
+
 /**
  * bbtips_npc class
  *
@@ -48,7 +55,7 @@ class bbtips_npc extends bbtips
 		
 		if (!class_exists('wowhead_cache')) 
 		{
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
 		$cache = new wowhead_cache();
 		
@@ -59,7 +66,7 @@ class bbtips_npc extends bbtips
 			if (!$result)
 			{
 				// not found
-				return $this->_notFound('NPC', $name);
+				return $this->NotFound('NPC', $name);
 			}
 			else
 			{
@@ -207,8 +214,8 @@ class bbtips_npc extends bbtips
 	**/
 	private function _generateHTML($info, $type, $size = '', $rank = '', $gems = '')
 	{
-	    $info['link'] = $this->_generateLink($info['npcid'], 'npc'); 
-		return $this->_replaceWildcards($this->patterns->pattern($type), $info);
+	    $info['link'] = $this->GenerateLink($info['npcid'], 'npc');
+		return $this->ReplaceWildcards($this->patterns->pattern($type), $info);
 	}
 	
 }

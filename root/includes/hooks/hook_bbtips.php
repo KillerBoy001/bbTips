@@ -34,31 +34,35 @@ function bbtipshooks(&$hook, $handle, $include_once = true)
     //start with the result from the previous hook
     $result = $hook->previous_hook_result('display');
     //in view mode
-    if(is_array($template->_tpldata['postrow']) && count($template->_tpldata['postrow'])>0)
-    {
-        if (!class_exists('bbtips'))
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/parse.' . $phpEx);
-        }
-        $bbtips = new bbtips;
 
-        //parse all messages
-        foreach( $template->_tpldata['postrow'] as $key => $val)
+    if(isset($template->_tpldata['postrow'] ))
+    {
+        if(is_array($template->_tpldata['postrow']) && count($template->_tpldata['postrow'])>0)
         {
-            $template->_tpldata['postrow'][$key]['MESSAGE'] = $bbtips->parse( $template->_tpldata['postrow'][$key]['MESSAGE'] );
+            if (!class_exists('bbtips_parser'))
+            {
+                require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_parser.' . $phpEx);
+            }
+            $bbtips = new bbtips_parser;
+
+            //parse all messages
+            foreach( $template->_tpldata['postrow'] as $key => $val)
+            {
+                $template->_tpldata['postrow'][$key]['MESSAGE'] = $bbtips->parse( $template->_tpldata['postrow'][$key]['MESSAGE'] );
+            }
+            unset($bbtips);
         }
-        unset($bbtips);
     }
     else
     {
         //in preview mode
         if( isset($template->_tpldata['.'][0]['PREVIEW_MESSAGE']) )
         {
-            if (!class_exists('bbtips'))
+            if (!class_exists('bbtips_parser'))
             {
-                require($phpbb_root_path . 'includes/bbdkp/bbtips/parse.' . $phpEx);
+                require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_parser.' . $phpEx);
             }
-            $bbtips = new bbtips;
+            $bbtips = new bbtips_parser;
             $template->_tpldata['.'][0]['PREVIEW_MESSAGE'] = $bbtips->parse( $template->_tpldata['.'][0]['PREVIEW_MESSAGE']);
             unset($bbtips);
         }

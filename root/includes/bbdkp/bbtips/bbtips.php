@@ -16,20 +16,20 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+
 /**
  * Wowhead Base Class
  *
  */
 abstract class bbtips
 {
-
     public $ptr;
     public $built_url;
     public $lang;
     public $patterns;
     public $args;
 
-    function __construct($arguments = array())
+    public function __construct($arguments = array())
     {
         global $config, $phpEx, $phpbb_root_path;
 
@@ -160,7 +160,7 @@ abstract class bbtips
 	* Returns the link to the spell/quest
 	* @access private
 	**/
-	public function _generateLink($id, $type)
+	public function GenerateLink($id, $type)
 	{
 		if ($type == 'itemico' || $type == 'item' || $type == 'itemdkp' || $type == 'ptritem' ||  $type == 'ptritemico')
 		{
@@ -176,7 +176,7 @@ abstract class bbtips
 	* Checks if SimpleXML can accept 3 parameters
 	* @access private
 	**/
-	public function _allowSimpleXMLOptions()
+	public function AllowSimpleXMLOptions()
 	{
 		$parts = explode('.', phpversion());
 		return ($parts[0] == 5 && $parts[1] >= 1) ? true : false;
@@ -186,7 +186,7 @@ abstract class bbtips
 	* Determines if we can use SimpleXML
 	* @access private
 	**/
-	public function _useSimpleXML()
+	public function UseSimpleXML()
 	{
 		$parts = explode('.', phpversion());
 		return ($parts[0] == 5) ? true : false;
@@ -196,7 +196,7 @@ abstract class bbtips
 	* Called when object isn't found
 	* @access private
 	**/
-	public function _notFound($name)
+	public function NotFound($name)
 	{
 		global $user; 
 		$user->add_lang ( array ('mods/dkp_tooltips' ));
@@ -223,12 +223,12 @@ abstract class bbtips
 			return false; 
 		}
 
-		if ($this->_useSimpleXML())
+		if ($this->UseSimpleXML())
 		{
 			// accounts for SimpleXML not being able to handle 3 parameters if you're using PHP 5.1 or below.
-			if (!$this->_allowSimpleXMLOptions())
+			if (!$this->AllowSimpleXMLOptions())
 			{
-				$data = $this->_removeCData($data);
+				$data = $this->RemoveCData($data);
 				$xml = simplexml_load_string($data, 'SimpleXMLElement');
 			}
 			else
@@ -255,89 +255,12 @@ abstract class bbtips
 		}
 	}
 	
-	/**
-	* Cleans HTML for passing to Wowhead
-	* @access private
-	**/
-	private function _cleanHTML($string)
-	{
-	    if (function_exists("mb_convert_encoding"))
-	        $string = mb_convert_encoding($string, "ISO-8859-1", "HTML-ENTITIES");
-	    else
-	    {
-	       $conv_table = get_html_translation_table(HTML_ENTITIES);
-	       $conv_table = array_flip($conv_table);
-	       $string = strtr ($string, $conv_table);
-	       $string = preg_replace('/&#(\d+);/me', "chr('\\1')", $string);
-	    }
-	    return ($string);
-	}
-
-	/**
-	* Encodes the string in UTF-8 if it already isn't
-	* @access private
-	**/
-	private function _convert_string($str)
-	{
-		// convert to utf8, if necessary
-		if (!$this->_is_utf8($str))
-		{
-			$str = utf8_encode($str);
-		}
-
-		// clean up the html
-		$str = $this->_cleanHTML($str);
-
-		// return the url encoded string
-		return urlencode($str);
-	}
-
-	/**
-	* Returns true if the $string is UTF-8, false otherwise.
-	* @access private
-	**/
-	private function _is_utf8($string) {
-		// From http://w3.org/International/questions/qa-forms-utf-8.html
-		return preg_match('%^(?:
-			[\x09\x0A\x0D\x20-\x7E]            # ASCII
-			| [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
-			|  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
-			| [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
-			|  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
-			|  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
-			| [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
-			|  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
-		)*$%xs', $string);
-	}
-
-	/**
-	* Gets the proper domain for the language selected
-	* @access private
-	**/
-	private function _getDomain()
-	{
-		if (!$this->ptr)
-		{
-			if ($this->lang == 'en')
-			{
-				return 'http://www.wowhead.com';
-			}
-			else
-			{
-				return 'http://' . strtolower($this->lang) . '.wowhead.com';
-			}
-		}
-		else
-		{
-			return 'http://ptr.wowhead.com';			
-		}
-	}
 
 	/**
 	* Replaces wildcards from patterns
 	* @access private
 	**/
-	public function _replaceWildcards($in, $info)
+	public function ReplaceWildcards($in, $info)
 	{
 		$wildcards = array();
 
@@ -390,7 +313,7 @@ abstract class bbtips
 	 * 
 	 * if the user is using php 5.1 then strip CDATA from xml
 	 */
-	public function _removeCData($xml)
+	public function RemoveCData($xml)
 	{
 	    $new_xml = NULL;
 	    preg_match_all("/\<\!\[CDATA \[(.*)\]\]\>/U", $xml, $args);
@@ -410,8 +333,87 @@ abstract class bbtips
 	
 	    return $new_xml;
 	}
-	
-	  /**
+
+    /**
+     * Cleans HTML for passing to Wowhead
+     * @access private
+     **/
+    private function _cleanHTML($string)
+    {
+        if (function_exists("mb_convert_encoding"))
+            $string = mb_convert_encoding($string, "ISO-8859-1", "HTML-ENTITIES");
+        else
+        {
+            $conv_table = get_html_translation_table(HTML_ENTITIES);
+            $conv_table = array_flip($conv_table);
+            $string = strtr ($string, $conv_table);
+            $string = preg_replace('/&#(\d+);/me', "chr('\\1')", $string);
+        }
+        return ($string);
+    }
+
+    /**
+     * Encodes the string in UTF-8 if it already isn't
+     * @access private
+     **/
+    private function _convert_string($str)
+    {
+        // convert to utf8, if necessary
+        if (!$this->_is_utf8($str))
+        {
+            $str = utf8_encode($str);
+        }
+
+        // clean up the html
+        $str = $this->_cleanHTML($str);
+
+        // return the url encoded string
+        return urlencode($str);
+    }
+
+    /**
+     * Returns true if the $string is UTF-8, false otherwise.
+     * @access private
+     **/
+    private function _is_utf8($string) {
+        // From http://w3.org/International/questions/qa-forms-utf-8.html
+        return preg_match('%^(?:
+			[\x09\x0A\x0D\x20-\x7E]            # ASCII
+			| [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+			|  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
+			| [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+			|  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
+			|  \xF0[\x90-\xBF][\x80-\xBF]{2}     # planes 1-3
+			| [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+			|  \xF4[\x80-\x8F][\x80-\xBF]{2}     # plane 16
+		)*$%xs', $string);
+    }
+
+    /**
+     * Gets the proper domain for the language selected
+     * @access private
+     **/
+    private function _getDomain()
+    {
+        if (!$this->ptr)
+        {
+            if ($this->lang == 'en')
+            {
+                return 'http://www.wowhead.com';
+            }
+            else
+            {
+                return 'http://' . strtolower($this->lang) . '.wowhead.com';
+            }
+        }
+        else
+        {
+            return 'http://ptr.wowhead.com';
+        }
+    }
+
+
+    /**
 	 * connects to remote site and gets xml or html using Curl, fopen, or fsockopen
 	 * @param char $url
 	 * @param char $loud default false

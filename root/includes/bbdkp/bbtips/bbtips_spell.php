@@ -18,6 +18,12 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
 /**
  * Class bbtips_spell
  *
@@ -48,7 +54,7 @@ class bbtips_spell extends bbtips
 
 		if ( !class_exists('wowhead_cache')) 
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx);    
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
         $cache = new wowhead_cache();
 
@@ -67,7 +73,7 @@ class bbtips_spell extends bbtips
 
 			if (!$result)
 			{
-				return $this->_notfound('spell', $name);
+				return $this->NotFound('spell', $name);
 			}
 			else
 			{
@@ -182,9 +188,9 @@ class bbtips_spell extends bbtips
 	**/
 	function _generateHTML($info, $type, $size = '', $gems = '')
 	{
-	    $info['link'] = $this->_generateLink($info['itemid'], $type);
+	    $info['link'] = $this->GenerateLink($info['itemid'], $type);
 		{
-			return $this->_replaceWildcards($this->patterns->pattern('spell'), $info);
+			return $this->ReplaceWildcards($this->patterns->pattern('spell'), $info);
 		}
 
 	}

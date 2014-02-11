@@ -14,6 +14,13 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
+
 /**
  * Class bbtips_item
  *
@@ -48,25 +55,26 @@ class bbtips_item extends bbtips
 	public $icon;
 	public $quality;
 
-	/*
-	 * $bbcode : either 'item' or 'itemico' or 'itemdkp'
-	 */
-	public function bbtips_item($bbcode, $argin = array())
-	{
-		global $phpEx, $phpbb_root_path, $config; 
-		
-		if (!class_exists('wowhead_patterns')) 
+    /**
+     * @param string $bbcode  either 'item' or 'itemico' or 'itemdkp'
+     * @param array $argin
+     */
+    function __construct($arguments = array(), $bbcode)
+    {
+        global $phpEx, $phpbb_root_path, $config;
+        parent::__construct($arguments);
+        if (!class_exists('wowhead_patterns'))
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_patterns.' . $phpEx);
         }
         $this->patterns = new wowhead_patterns();
-		$this->type = $bbcode;
-		$this->args = $argin;
-		$this->lang = $config['bbtips_lang'];
-		$this->size = (!array_key_exists('size', $this->args)) ? 'medium' : $this->args['size'];
-	}
+        $this->type = $bbcode;
+        $this->args = $arguments;
+        $this->lang = $config['bbtips_lang'];
+        $this->size = (!array_key_exists('size', $this->args)) ? 'medium' : $this->args['size'];
+    }
 
-	/**
+    /**
 	* Parses Items
 	*
 	* @access public
@@ -82,7 +90,7 @@ class bbtips_item extends bbtips
 		
 	    if (!class_exists('wowhead_cache')) 
         {
-          	   require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx); 
+          	   require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
 		$cache = new wowhead_cache();
 
@@ -112,7 +120,7 @@ class bbtips_item extends bbtips
 			if (!$result)
 			{
 				// item not found 
-				return $this->_notfound($this->type, $name);
+				return $this->NotFound($this->type, $name);
 			}
 			
 			
@@ -195,18 +203,18 @@ class bbtips_item extends bbtips
 	private function _generateHTML($info, $gems = '')
 	{
 		
-		$info['link'] = $this->_generateLink($info['itemid'], $this->type);
+		$info['link'] = $this->GenerateLink($info['itemid'], $this->type);
 		
 		if (trim($gems) != '')
 		{
 			$info['gems'] = $gems;
 			if ($this->type =='item' or $this->type =='itemdkp' or $this->type =='ptritem')
 			{
-			    return $this->_replaceWildcards($this->patterns->pattern('item_gems'), $info);
+			    return $this->ReplaceWildcards($this->patterns->pattern('item_gems'), $info);
 			}
             elseif  ($this->type =='itemico' or $this->type =='ptritemico')
             {
-			    return $this->_replaceWildcards($this->patterns->pattern('icon_'.$this->size.'_gems'), $info);
+			    return $this->ReplaceWildcards($this->patterns->pattern('icon_'.$this->size.'_gems'), $info);
             }
 		}
 		else
@@ -214,11 +222,11 @@ class bbtips_item extends bbtips
 			// no gems
 			if ($this->type =='item' or $this->type =='itemdkp' or $this->type =='ptritem')
 			{
-				return $this->_replaceWildcards($this->patterns->pattern('item'), $info);
+				return $this->ReplaceWildcards($this->patterns->pattern('item'), $info);
 			}
 			elseif  ($this->type =='itemico' or $this->type =='ptritemico')
 			{
-				return $this->_replaceWildcards($this->patterns->pattern('icon_'.$this->size), $info);
+				return $this->ReplaceWildcards($this->patterns->pattern('icon_'.$this->size), $info);
 			}
 		}
 	}
@@ -240,18 +248,18 @@ class bbtips_item extends bbtips
 		//if wowhead is down
 		if(preg_match('#HTTP/1.1 503 Service Unavailable#s',$data,$match))
 		{
-			return $this->_notFound('Item', $id);
+			return $this->NotFound('Item', $id);
 		}
 		
-		if ($this->_useSimpleXML())
+		if ($this->UseSimpleXML())
 		{
 			// switch libxml error handler on
 			libxml_use_internal_errors(true);
 			// accounts for SimpleXML not being able to handle 3 parameters if you're using PHP 5.1 or below.
-			if (!$this->_allowSimpleXMLOptions())
+			if (!$this->AllowSimpleXMLOptions())
 			{
 				// remove CDATA tags
-				$data = $this->_removeCData($data);
+				$data = $this->RemoveCData($data);
 				$xml = simplexml_load_string($data, 'SimpleXMLElement');
 			}
 			else
@@ -301,7 +309,7 @@ class bbtips_item extends bbtips
 		}
 		else 
 		{
-			return $this->_notFound('Item', $item);
+			return $this->NotFound('Item', $item);
 		}
 	}
 	

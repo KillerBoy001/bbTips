@@ -18,6 +18,13 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
+
 /**
  * Class bbtips_achievement
  *
@@ -40,7 +47,7 @@ class bbtips_achievement extends bbtips
 		
 		if (!class_exists('wowhead_cache')) 
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
 		$cache = new wowhead_cache();
 
@@ -61,7 +68,7 @@ class bbtips_achievement extends bbtips
 			{
 				// not found
 				
-				return $this->_notfound('achievement', $name);
+				return $this->NotFound('achievement', $name);
 			}
 			else
 			{
@@ -190,8 +197,8 @@ class bbtips_achievement extends bbtips
 	**/
 	private function _generateHTML($info, $type, $size = '', $rank = '', $gems = '')
 	{
-	    $info['link'] = $this->_generateLink($info['itemid'], $type);
-		return $this->_replaceWildcards($this->patterns->pattern($type), $info);
+	    $info['link'] = $this->GenerateLink($info['itemid'], $type);
+		return $this->ReplaceWildcards($this->patterns->pattern($type), $info);
 	}
 	
 	

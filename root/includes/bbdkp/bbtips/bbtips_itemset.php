@@ -18,6 +18,13 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//require base class
+if (!class_exists('bbtips'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
+}
+
+
 /**
  * Class bbtips_itemset
  *
@@ -37,12 +44,12 @@ if (!defined('IN_PHPBB'))
 class bbtips_itemset extends bbtips
 {
 	// variables
-	public $lang;
+	public  $lang;
 	private $itemset = array();
 	private $itemset_items = array();
 	private $setid;
-	public $patterns; 
-	private $args;
+	public  $patterns;
+    public  $args;
 
 	/**
 	* Parses itemset bbcode
@@ -59,7 +66,7 @@ class bbtips_itemset extends bbtips
 		
 		if (!class_exists('wowhead_cache')) 
         {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_cache.' . $phpEx); 
+            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
 		$cache = new wowhead_cache();
 		
@@ -79,7 +86,7 @@ class bbtips_itemset extends bbtips
 			if (!$result)
 			{
 				// item not found 
-				return $this->_notfound($name);
+				return $this->NotFound($name);
 			}
 			else
 			{   //insert
@@ -162,10 +169,10 @@ class bbtips_itemset extends bbtips
 			
 		libxml_use_internal_errors(true);
 		// accounts for SimpleXML not being able to handle 3 parameters if you're using PHP 5.1 or below.
-		if (!$this->_allowSimpleXMLOptions())
+		if (!$this->AllowSimpleXMLOptions())
 		{
 			// remove CDATA tags
-			$xml_data = $this->_removeCData($xml_data);
+			$xml_data = $this->RemoveCData($xml_data);
 			$xml = simplexml_load_string($xml_data, 'SimpleXMLElement');
 		}
 		else
@@ -341,10 +348,10 @@ class bbtips_itemset extends bbtips
 			
 						libxml_use_internal_errors(true);
 						// accounts for SimpleXML not being able to handle 3 parameters if you're using PHP 5.1 or below.
-						if (!$this->_allowSimpleXMLOptions())
+						if (!$this->AllowSimpleXMLOptions())
 						{
 							// remove CDATA tags
-							$xml_data = $this->_removeCData($xml_data);
+							$xml_data = $this->RemoveCData($xml_data);
 							$xml = simplexml_load_string($xml_data, 'SimpleXMLElement');
 						}
 						else
@@ -409,7 +416,7 @@ class bbtips_itemset extends bbtips
 		{
 			$patt = $this->patterns->pattern('itemset_item');
 			$search = array(
-				'{link}'	=>	$this->_generateLink($item['itemid'], 'item'),
+				'{link}'	=>	$this->GenerateLink($item['itemid'], 'item'),
 				'{name}'	=>	$item['name'],
 				'{qid}'		=>	$item['quality'],
 				'{icon}'	=>	$item['icon']
@@ -422,7 +429,7 @@ class bbtips_itemset extends bbtips
 		}
 
 		// now generate everything
-		$set_html = str_replace('{link}', $this->_generateLink($this->itemset['setid'], 'itemset'), $set_html);
+		$set_html = str_replace('{link}', $this->GenerateLink($this->itemset['setid'], 'itemset'), $set_html);
 		$set_html = str_replace('{name}', $this->itemset['name'], $set_html);
 		$set_html = str_replace('{items}', $item_html, $set_html);
 
