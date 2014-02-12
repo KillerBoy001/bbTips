@@ -309,7 +309,7 @@ class bbtips_item extends bbtips
 		}
 		else 
 		{
-			return $this->NotFound('Item', $item);
+			return $this->NotFound('Item', $id);
 		}
 	}
 	

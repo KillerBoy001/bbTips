@@ -350,7 +350,7 @@ class wowhead_cache
     		'search_name'   => $info['search_name'], 
     		'quality'       => $quality,
     		'rank'          => $rank,
-    		'type'          => $info['type'],
+    		'type'          => (count($info['type'])> 0) ? $info['type'] : '',
     		'lang'          => $info['lang'], 
     		'icon'          => $icon, 
     		'icon_size'     => $icon_size, 

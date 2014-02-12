@@ -99,8 +99,8 @@ class bbtips_craft extends bbtips
 					$prid = 0;
 					$quality = (string) $xml->item->quality['id'];
 					$icon = (string) $xml->item->icon;
-					
-					//find product name, mats
+                    $html = (string) $xml->item->htmlTooltip[0];
+                        //find product name, mats
 					$prname = "";
 
 					switch ($subclass)
@@ -115,7 +115,7 @@ class bbtips_craft extends bbtips
 					        
 					        // span 0 is the product
 					        // span 1 is the product
-							$prhtml = str_get_html ($xml->item->htmlTooltip[0], $lowercase = true);
+							$prhtml = str_get_html ($html, $lowercase = true);
 							$prhref = $prhtml->find('table td span a', 0)->href;
 							preg_match_all('/([\d]+)/', $prhref, $match);
 		 					$prid= (int) @$match[1][0];
@@ -141,7 +141,7 @@ class bbtips_craft extends bbtips
 					        
 					        // span 0 is the product
 					        // span 1 is the product
-							$prhtml = str_get_html ($xml->item->htmlTooltip[0], $lowercase = true);
+							$prhtml = str_get_html ($html, $lowercase = true);
 							$prhref = $prhtml->find('table tr td span[class*=q] a', 1)->href;
 							preg_match_all('/([\d]+)/', $prhref, $match);
 		 					$prid= (int) @$match[1][0];
@@ -180,7 +180,7 @@ class bbtips_craft extends bbtips
 					 						
 					 						if ( !class_exists('bbtips_item'))
 							                {	                	
-							                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_item.' . $phpEx);    
+							                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_item.' . $phpEx);
 							                }
 							                $args = array();
 							                $object = new bbtips_item($this->craft_reagents[$reagents]['itemid'], $args);
