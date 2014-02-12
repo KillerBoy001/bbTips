@@ -134,50 +134,35 @@ class bbtips_spell extends bbtips
 		}
 		else
 		{
-			/* cleanup json
-			 * see http://www.bbdkp.com/tracker.php?p=5&t=209
-			* and http://www.wowhead.com/forums&topic=205251&p=3247970
-			*/
-			$line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
-			
-			// decode the JSON result
-			if (!$json = json_decode($line, true))
-			{
-				return false;
-			}
-				
-			// loop through the resulting array and pull out the ones that match the name
-			$json_array = array();
-			foreach ($json as $spell)
-			{
-				$spell['name'] = substr($spell['name'], 1);
-				if (stripslashes(strtolower($spell['name'])) == stripslashes(strtolower($name)))
-				{
-					// add it to the array
-					$json_array[] = $spell;
-				}
-			}
-			
-			if (sizeof($json_array) == 0)
-			{
-				return false;
-			}
-			
-			// grab first one since ranks dont exist anymore
-			//$result = ($rank != '') ? $json_array[$rank - 1] : $json_array[sizeof($json_array) - 1];
-			$result = $json_array[sizeof($json_array) - 1];
 
-			$spell = array(	// finally return what we found
-				'name'			=>	stripslashes($result['name']),
-				'search_name'	=>	$name,
-				'itemid'		=>	$result['id'],
-				'rank'			=>	($rank != '') ? $rank : 0,
-				'type'			=>	'spell',
-				'lang'			=>	$this->lang
-			);
-			
-			return $spell; 
-			
+           /* cleanup json
+            * see http://www.bbdkp.com/tracker.php?p=5&t=209
+            * and http://www.wowhead.com/forums&topic=205251&p=3247970
+            */
+            $line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
+            $line = str_replace('searchpopularity', '"searchpopularity"', $line);
+            $linearray = $this->json_split_objects($line);
+            foreach($linearray as $i => $jsonline)
+            {
+                break;
+            }
+
+            // json decode
+            if (!$spells = json_decode($jsonline, true))
+            {
+                return false;
+            }
+
+            $spell = array(
+                'name'			=>	$spells['name'],
+                'search_name'	=>	$name,
+                'itemid'		=>	$spells['id'],
+                'rank'			=>	($rank != '') ? $rank : 0,
+                'type'			=>	'spell',
+                'lang'			=>	$this->lang
+            );
+            return $spell;
+
 		}
 		
 	}
