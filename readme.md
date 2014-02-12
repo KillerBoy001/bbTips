@@ -2,11 +2,9 @@
 
 #bbTips v1.0.4
 
-BBCode Tooltip mod. 
+[Wowhead tooltips](http://www.wowhead.com/tooltips) let you query by Id. With the bbTips tooltip mod, this is integrated in your bbcodes on you phpBB forum, plus the ability to query by name. 
 
-WowHead-style Tooltips (Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp with PTR support.
-
-BBcodes get installed automatically on your Board
+bbcodes installed: Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp with PTR support. 
 
 ### Example BBcode usage
 
@@ -68,7 +66,7 @@ in bbTips 1.0.4, recipes, guild perks and Glyph spells can be used.
 ####NPC bbCode
 
 You can select any npc 
-`[npc]Illidan Stormrage[/npc]`
+`[npc]Malfurion Stormrage/npc]`
 
 including the new Pandaria Battle pets :
 
