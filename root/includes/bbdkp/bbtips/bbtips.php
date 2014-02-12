@@ -309,6 +309,56 @@ abstract class bbtips
 		return $in;
 	}
 
+    /**
+     * json_split_objects - Return an array of many JSON objects
+     *
+     * In Wowhead, JSON output is presented as multiple
+     * objects, which you cannot simply pass in to json_decode(). This function will split
+     * the JSON objects apart and return them as an array of strings, one object per indice.
+     *
+     * @param string $json  The JSON data to parse
+     * @return array
+     */
+    public function json_split_objects($json)
+    {
+        //remove first bracket
+        if (substr($json, 0, 1) == "[")
+        {
+            $json = substr($json, 1);
+        }
+        //remove last bracket
+        if (substr($json, -1) == "]")
+        {
+            $json = substr($json, 0, -1);;
+        }
+
+        //split string into array of json strings
+        $q = FALSE;
+        $len = strlen($json);
+        for($l=$c=$i=0; $i<$len; $i++)
+        {
+            $json[$i] == '"' && ($i>0?$json[$i-1]:'') != '\\' && $q = !$q;
+            if(!$q && in_array($json[$i], array(" ", "\r", "\n", "\t"))){continue;}
+            in_array($json[$i], array('{', '[')) && !$q && $l++;
+            in_array($json[$i], array('}', ']')) && !$q && $l--;
+            (isset($objects[$c]) && $objects[$c] .= $json[$i]) || $objects[$c] = $json[$i];
+            $c += ($l == 0);
+        }
+
+        //remove arrays with only commas
+        foreach ($objects as $i => $object)
+        {
+            if ($object == ",")
+            {
+                unset($objects[$i]);
+            }
+
+        }
+        //reset indexes
+        return array_values($objects);;
+
+    }
+
 	/****
 	 * 
 	 * if the user is using php 5.1 then strip CDATA from xml

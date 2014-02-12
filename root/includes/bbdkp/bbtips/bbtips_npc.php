@@ -39,8 +39,7 @@ class bbtips_npc extends bbtips
 {
 	public $lang;
 	public $patterns;
-	private $args; 
-
+	public $args;
 
 	public function parse($name)
 	{
@@ -170,27 +169,29 @@ class bbtips_npc extends bbtips
 		* and http://www.wowhead.com/forums&topic=205251&p=3247970
 		*/
 		$line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
-		
-		// json decode
-		if (!$json = json_decode($line, true))
-		{
-			return false;
-		}
-			
-		foreach ($json as $npc)
-		{
-			if (stripslashes(strtolower($npc['name'])) == stripslashes(strtolower($name)))
-			{
-				return array(
-					'npcid'			=>	$npc['id'],
-					'name'			=>	stripslashes($npc['name']),
-					'search_name'	=>	$name,
-					'lang'			=>	$this->lang
-				);
-			}
-		}
-		// otherwise, return false
-		return false;
+        $line = str_replace('searchpopularity', '"searchpopularity"', $line);
+        $linearray = $this->json_split_objects($line);
+
+        foreach($linearray as $i => $jsonline)
+        {
+            break;
+        }
+
+        // json decode
+        if (!$npc = json_decode($jsonline, true))
+        {
+            return false;
+        }
+
+        $npc = array(
+            'npcid'			=>	$npc['id'],
+            'name'			=>	$npc['name'],
+            'search_name'	=>	$npc['name'],
+            'lang'			=>	$this->lang
+        );
+
+        return $npc;
+
 	}
 
 

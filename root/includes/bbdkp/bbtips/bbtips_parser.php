@@ -114,7 +114,7 @@ class bbtips_parser
 						case 'ptrspell':
 			        		if ( !class_exists('bbtips_spell'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_spell.' . $phpEx);
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_spell.' . $phpEx);
 			                }
 			                $object = new bbtips_spell($args);
 							break;
@@ -122,7 +122,7 @@ class bbtips_parser
 						case 'ptrachievement':
 			                if ( !class_exists('bbtips_achievement'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_achievement.' . $phpEx);
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_achievement.' . $phpEx);
 			                }
 			                $object = new bbtips_achievement($args);
 							break;
@@ -130,7 +130,7 @@ class bbtips_parser
 						case 'ptrnpc':
 			                if ( !class_exists('bbtips_npc'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowhead_npc.' . $phpEx);
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_npc.' . $phpEx);
 			                }
 			                $object = new bbtips_npc($args);
 							break;
@@ -138,7 +138,7 @@ class bbtips_parser
 							// uses the arguments realm and region
 				            if ( !class_exists('wowcharacter'))
 			                {
-			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/wowcharacter.' . $phpEx);
+			                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_character.' . $phpEx);
 			                }
 			                $object = new wowcharacter($args);
 							break;
