@@ -33,10 +33,9 @@ if (!class_exists('bbtips'))
  */
 class bbtips_quest extends bbtips
 {
-	public $lang;
-	public $patterns;
-	private $args = array();
-
+    public $lang;
+    public $patterns;
+    public $args;
 
 	public function parse($name)
 	{
@@ -184,34 +183,34 @@ class bbtips_quest extends bbtips
 		}
 		else
 		{
-			/* cleanup json
-			 * see http://www.bbdkp.com/tracker.php?p=5&t=209
-			* and http://www.wowhead.com/forums&topic=205251&p=3247970
-			*/
-			$line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
-			
-			// decode the json
-			if (!$json = json_decode($line, true))
-			{
-				return false;
-			}
-			
-			foreach ($json as $quests)
-			{
-				if (stripslashes(strtolower($quests['name'])) == stripslashes(strtolower($name)))
-				{
-					$quest = array(
-						'name'			=>	$quests['name'],
-						'search_name'	=>	$name,
-						'type'			=>	'quest',
-						'itemid'		=>	$quests['id'],
-						'lang'			=>	$this->lang
-					);
-					return $quest; 
-				}
-			}
-			
-			return false;
+
+            /* cleanup json
+             * see http://www.bbdkp.com/tracker.php?p=5&t=209
+            * and http://www.wowhead.com/forums&topic=205251&p=3247970
+            */
+            $line = str_replace("frombeta:'1'", '"frombeta":1' , $line);
+            $line = str_replace('searchpopularity', '"searchpopularity"', $line);
+            $linearray = $this->json_split_objects($line);
+            foreach($linearray as $i => $jsonline)
+            {
+                break;
+            }
+
+            // json decode
+            if (!$quests = json_decode($jsonline, true))
+            {
+                return false;
+            }
+
+            $quest = array(
+                'name'			=>	$quests['name'],
+                'search_name'	=>	$name,
+                'type'			=>	'quest',
+                'itemid'		=>	$quests['id'],
+                'lang'			=>	$this->lang
+            );
+            return $quest;
+
 		}
 			
 	}
