@@ -108,8 +108,14 @@ v1.0.4
 
 
 ## Changelog
--	2014-01-19 : 1.0.4
+-	in development : 1.0.4
+	-	updated to phpBB 3.0.12
 	-	compatible with bbDKP 1.3.0
+	-	removed edits in functions.php, now using phpbb hooks
+	-	if no bbdkp installed, don't attempt to insert into bbdkp plugin table
+	-	json parser redeveloped, wowhead redid their search page
+	-	while no json is available, item lookup is done by xml lookup, example http://www.wowhead.com/item=Decimation+Treads&xml
+	
 	
 -	2013-07-30 : 1.0.3
 	-	repaired xml install files
