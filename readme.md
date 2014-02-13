@@ -2,9 +2,12 @@
 
 #bbTips v1.0.4
 
-[Wowhead tooltips](http://www.wowhead.com/tooltips) let you query by Id. With the bbTips tooltip mod, this is integrated in your bbcodes on you phpBB forum, plus the ability to query by name. 
+[Wowhead tooltips](http://www.wowhead.com/tooltips) lets you have tooltips on urls by wowhead Id. 
 
-bbcodes installed: Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp with PTR support. 
+
+The bbTips tooltip mod integrates this functionality in bbcodes on your phpBB forum, plus the ability to query by name. 
+
+Multiple bbcodes are available: Item, Craft, Spell, Quest, Achievements, npc, wowchar, itemset, item icon, item dkp with PTR support. 
 
 ### Example BBcode usage
 
