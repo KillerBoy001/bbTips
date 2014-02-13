@@ -109,7 +109,7 @@ v1.0.4 (in development but already stable)
 
 
 ## Changelog
--	in development : 1.0.4
+-	in development : 1.0.4 :cactus: 
 	-	updated to phpBB 3.0.12
 	-	compatible with bbDKP 1.3.0
 	-	removed edits in functions.php, now using phpbb hooks
