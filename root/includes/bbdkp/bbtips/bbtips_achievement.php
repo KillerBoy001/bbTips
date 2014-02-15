@@ -45,11 +45,11 @@ class bbtips_achievement extends bbtips
 			return false;
 		}
 		
-		if (!class_exists('wowhead_cache')) 
+		if (!class_exists('bbtips_cache'))
         {
             require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
-		$cache = new wowhead_cache();
+		$cache = new bbtips_cache();
 
 
 		if (!$result = $cache->getObject($name, 'achievement', $this->lang))

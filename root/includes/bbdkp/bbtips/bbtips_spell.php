@@ -52,11 +52,11 @@ class bbtips_spell extends bbtips
 		    return false;
 		}
 
-		if ( !class_exists('wowhead_cache')) 
+		if ( !class_exists('bbtips_cache'))
         {
             require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
-        $cache = new wowhead_cache();
+        $cache = new bbtips_cache();
 
 		$rank = (!array_key_exists('rank', $this->args)) ? '' : $this->args['rank'];
 

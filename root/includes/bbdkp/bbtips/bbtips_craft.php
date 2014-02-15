@@ -22,6 +22,15 @@ if (!class_exists('bbtips'))
     require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips.' . $phpEx);
 }
 
+if (!class_exists('simple_html_dom_node'))
+{
+    include ($phpbb_root_path . 'includes/bbdkp/bbtips/simple_html_dom.' . $phpEx);
+}
+
+if (!class_exists('bbtips_cache'))
+{
+    require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
+}
 
 /**
  * Class bbtips_craft
@@ -40,7 +49,22 @@ class bbtips_craft extends bbtips
 	private $craft_recipe = array();
 	private $craft = array();
 	private $craft_reagents = array();
-	private $mats = false;
+
+    /**
+     * did user ask for materials?
+     * @var bool
+     */
+    private $mats = false;
+
+    /**
+     * @var
+     */
+    private $class;
+    private $subclass;
+    private $craftid;
+    private $quality;
+    private $icon;
+    private $prname;
 
 	/**
 	 * parser
@@ -57,13 +81,7 @@ class bbtips_craft extends bbtips
 		{
 			return false;
 		}
-		
-		if (!class_exists('wowhead_cache')) 
-        {
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
-        }
-		
-        
+
         $sql = "SELECT spellid as recipeid, name FROM " . BBTIPS_CRAFT_SPELL_TBL . " WHERE name='" . $db->sql_escape($name) . "'";		
 	    $result = $db->sql_query($sql);
 	    $recipe_id = $db->sql_fetchfield('recipeid', false, $result);
@@ -82,44 +100,39 @@ class bbtips_craft extends bbtips
 				if (!$this->AllowSimpleXMLOptions())
 				{
 					$data = $this->RemoveCData($data);
-					$xml = simplexml_load_string($data, 'SimpleXMLElement');
+					$xml = \simplexml_load_string($data, 'SimpleXMLElement');
 				}
 				else
 				{
-					$xml = simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
+					$xml = \simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA);
 				}
 
 				if ($xml->error == '')
 				{
 					
 					// make recipe array
-					$class =  (string)  $xml->item->class;
-					$subclass = (string) $xml->item->subclass;
-					$craftid = (string) $xml->item->attributes()->id;
-					$prid = 0;
-					$quality = (string) $xml->item->quality['id'];
-					$icon = (string) $xml->item->icon;
-                    $html = (string) $xml->item->htmlTooltip[0];
-                        //find product name, mats
-					$prname = "";
+					$this->class =  (string)  $xml->item->class;
+                    $this->subclass = (string) $xml->item->subclass;
+                    $this->craftid = (string) $xml->item->attributes()->id;
+                    $this->quality = (string) $xml->item->quality['id'];
+                    $this->icon = (string) $xml->item->icon;
+                    $this->html = (string) $xml->item->htmlTooltip[0];
+                    $this->prname = '';
 
-					switch ($subclass)
+					switch ($this->subclass)
 					{
 						case 'Enchanting Formulae':
 						
 							// get product by parsing through tooltip html
-							if (!class_exists('simple_html_dom_node')) 
-					        {
-					            include ($phpbb_root_path . 'includes/bbdkp/bbtips/simple_html_dom.' . $phpEx); 
-					        }
+
 					        
 					        // span 0 is the product
 					        // span 1 is the product
-							$prhtml = str_get_html ($html, $lowercase = true);
+							$prhtml = \str_get_html ($this->html, $lowercase = true);
 							$prhref = $prhtml->find('table td span a', 0)->href;
 							preg_match_all('/([\d]+)/', $prhref, $match);
 		 					$prid= (int) @$match[1][0];
-							$prname = (string) $prhtml->find('table td span a', 0)->plaintext;
+                            $this->prname = (string) $prhtml->find('table td span a', 0)->plaintext;
 							break;
 							
 						case 'Jewelcrafting Designs':
@@ -131,21 +144,16 @@ class bbtips_craft extends bbtips
 						default:
 
 							// the craft recipe
-							//$craftrecipe = (array) json_decode((string) '{' .$xml->item->json[0] . '}');
-							
+							// $craftrecipe = (array) json_decode((string) '{' .$xml->item->json[0] . '}');
 							// get product by parsing through tooltip html
-							if (!class_exists('simple_html_dom_node')) 
-					        {
-					            include ($phpbb_root_path . 'includes/bbdkp/bbtips/simple_html_dom.' . $phpEx); 
-					        }
-					        
+
 					        // span 0 is the product
 					        // span 1 is the product
-							$prhtml = str_get_html ($html, $lowercase = true);
+							$prhtml = str_get_html ($this->html, $lowercase = true);
 							$prhref = $prhtml->find('table tr td span[class*=q] a', 1)->href;
 							preg_match_all('/([\d]+)/', $prhref, $match);
-		 					$prid= (int) @$match[1][0];
-							$prname = (string) $prhtml->find('table tr td span[class*=q] a', 1)->plaintext;
+		 					$prid = (int) @$match[1][0];
+                            $this->prname = (string) $prhtml->find('table tr td span[class*=q] a', 1)->plaintext;
 							
 							// span 2 is use
 							// finally make reagents array from span 3 onwards
@@ -183,10 +191,12 @@ class bbtips_craft extends bbtips
 							                    require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_item.' . $phpEx);
 							                }
 							                $args = array();
-							                $object = new bbtips_item($this->craft_reagents[$reagents]['itemid'], $args);
-							                $object->parse(trim($this->craft_reagents[$reagents]['itemid']));
-					 						$this->craft_reagents[$reagents]['quality'] =  $object->quality;
-					 						$this->craft_reagents[$reagents]['icon'] = $object->icon;
+							                $item = new bbtips_item($args, 'item');
+
+							                $item->parse(trim($this->craft_reagents[$reagents]['itemid']));
+
+					 						$this->craft_reagents[$reagents]['quality'] =  $item->quality;
+					 						$this->craft_reagents[$reagents]['icon'] = $item->icon;
 											$reagents += 1;
 										}
 										
@@ -205,21 +215,21 @@ class bbtips_craft extends bbtips
 					
 					//fill recipe array	
 					$this->craft_recipe = array(
-						'recipeid'		=>	$craftid,
+						'recipeid'		=>	$this->craftid,
 						'name'			=>	$name,
-						'quality'		=>	$quality,
+						'quality'		=>	$this->quality,
 						'reagentof'		=>	$prid,
-						'icon'			=>  $icon,
+						'icon'			=>  $this->icon,
 					);
 					
 					// fill product array					
 					$this->craft = array(
 						'itemid'		=>	$prid,
-						'name'			=>	$prname,
-						'search_name'	=>	$prname,
-						'quality'		=>	$quality,
+						'name'			=>	$this->prname,
+						'search_name'	=>	$this->prname,
+						'quality'		=>	$this->quality,
 						'lang'			=>	(string) $this->lang,
-						'icon'			=>	'http://static.wowhead.com/images/wow/icons/medium/' . strtolower($icon) . '.jpg'
+						'icon'			=>	'http://static.wowhead.com/images/wow/icons/medium/' . strtolower($this->icon) . '.jpg'
 					);
 					
 				}//end xml noerror
@@ -240,7 +250,7 @@ class bbtips_craft extends bbtips
 			}
 			
 			unset($xml);
-			return $this->_toHTML($subclass);
+			return $this->_toHTML($this->subclass);
 		}
 		else
 		{  

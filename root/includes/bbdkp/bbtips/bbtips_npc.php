@@ -51,14 +51,8 @@ class bbtips_npc extends bbtips
 		global $config, $phpEx, $phpbb_root_path; 
 	
 		$this->lang = $config['bbtips_lang'];
-		
-		if (!class_exists('wowhead_cache')) 
-		{
-            require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
-        }
-		$cache = new wowhead_cache();
-		
-		if (!$result = $cache->getNPC($name, $this->lang))
+
+		if (!$result = $this->getNPC($name, $this->lang))
 		{
 			// not found in cache
 			$result = $this->_getNPCInfo($name);
@@ -70,7 +64,7 @@ class bbtips_npc extends bbtips
 			else
 			{
 				// found, save it and display
-				$cache->saveNPC($result);
+				$this->saveNPC($result);
 				
 				return $this->_generateHTML($result, 'npc');
 			}
@@ -139,7 +133,79 @@ class bbtips_npc extends bbtips
 
 	}
 
-	private function _getIDFromSearch($name, $data)
+    /**
+     * insert in phpbb_bbtips_wowhead_npc
+     * @param $info
+     * @return bool
+     */
+    private function saveNPC($info)
+    {
+        if (sizeof($info) == 0  || !isset($info['npcid']) || !isset($info['name'])  )
+        {
+            return false;
+        }
+
+        global $db;
+
+        // save the npc
+        $sql_ary = array(
+            'npcid'         => (int) $info['npcid'],
+            'name'    	     => $info['name'] ,
+            'search_name'   => $info['search_name'] ,
+            'lang'          => $info['lang'],
+        );
+
+        $sql = 'INSERT INTO ' . BBTIPS_NPC_TBL . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+        $result = $db->sql_query($sql);
+        if (!$result)
+        {
+            global $user;
+            $user->add_lang(array('mods/dkp_tooltips'));
+            trigger_error(  sprintf($user->lang['BBTOOLTIPS_ERRORCACHING'], $info['name'] , BBTIPS_NPC_TBL), E_USER_WARNING ) ;
+            return false;
+        }
+
+    }
+
+    /**
+     * selects an NPC
+     *
+     * @param string $name
+     * @param string $lang
+     * @return array
+     */
+    private function getNPC($name, $lang)
+    {
+        global $config, $db;
+        if (trim($lang) == '')
+        {
+            $lang = $config['bbtips_lang'];
+        }
+
+        $search = $db->sql_like_expression($db->any_char . $db->sql_escape($name) . $db->any_char) ;
+
+        $query_text = 'SELECT npcid, name FROM ' . BBTIPS_NPC_TBL . ' WHERE
+					 (search_name ' . $search . '
+					      OR name ' . $search . "
+					  )  AND lang='"  . $lang . "'";
+
+        $result = $db->sql_query($query_text);
+
+        if ( $db->sql_affectedrows() == 0)
+        {
+            $db->sql_freeresult($result);
+            return false;
+        }
+        else
+        {
+            $row =  $db->sql_fetchrow($result);
+            return $row;
+        }
+
+    }
+
+
+    private function _getIDFromSearch($name, $data)
 	{
 		if (trim($data) == '')
 		{

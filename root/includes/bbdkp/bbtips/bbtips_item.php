@@ -88,11 +88,11 @@ class bbtips_item extends bbtips
 			return false;
 		}
 		
-	    if (!class_exists('wowhead_cache')) 
+	    if (!class_exists('bbtips_cache'))
         {
           	   require($phpbb_root_path . 'includes/bbdkp/bbtips/dbal.' . $phpEx);
         }
-		$cache = new wowhead_cache();
+		$cache = new bbtips_cache();
 
 		// check if its already in the cache
 		if (!$result = $cache->getObject($name, $this->type, $this->lang, '', $this->size))
