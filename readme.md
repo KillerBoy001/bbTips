@@ -92,7 +92,7 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 `[craft mats]Recipe: Vial of the Sands[/craft]`
 
 ## Current
-v1.0.4 (in development but already stable)
+v1.0.4
 
 ## Installation
 
@@ -109,7 +109,7 @@ v1.0.4 (in development but already stable)
 
 
 ## Changelog
--	in development : 1.0.4 :cactus: 
+-	2014-02-15 : 1.0.4 :cactus: 
 	-	updated to phpBB 3.0.12
 	-	compatible with bbDKP 1.3.0
 	-	removed edits in functions.php, now using phpbb hooks
