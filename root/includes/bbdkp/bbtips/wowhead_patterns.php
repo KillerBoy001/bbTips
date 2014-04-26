@@ -27,7 +27,7 @@ class wowhead_patterns
 	public function wowhead_patterns()
 	{
         global $phpbb_root_path, $user, $phpEx;
-		$path = $phpbb_root_path . 'styles/' . $user->theme['template_path'] . '/template/bbtips/';
+		$path = $phpbb_root_path . 'styles/' . $user->theme['template_inherit_path'] . '/template/bbtips/';
 		if (!$opendir = @opendir($path) )
 		{
 			echo $path;
