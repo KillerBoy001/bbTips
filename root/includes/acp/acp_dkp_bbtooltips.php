@@ -1,10 +1,9 @@
 <?php
 /**
 * This class manages bbtips 
-* 
 * @author sajaki9@gmail.com
-* @version $Id$
-* @copyright (c) 2009 bbdkp http://code.google.com/p/bbdkp/
+* @version 1.0.4
+* @copyright (c) 2009 bbdkp https://github.com/bbDKP/bbTips
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 * 
 */
@@ -30,6 +29,11 @@ class acp_dkp_bbtooltips
       $link = '<br /><a href="'.append_sid("index.$phpEx", "i=dkp_bbtooltips&amp;mode=bbtooltips") . '"><h3>Return to Index</h3></a>'; 
       
 	  $user->add_lang(array('mods/dkp_tooltips'));
+	  
+		// bbtips version
+		$template->assign_vars ( array (
+				'BBTIPS_VERS' 		 	=> $config['bbdkp_plugin_bbtips_version'],
+		));			  
 	
       switch($mode)
       {

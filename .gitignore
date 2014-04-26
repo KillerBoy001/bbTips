@@ -1,0 +1,8 @@
+# ignore Mac invisibles
+.DS_Store
+# ignore eclipse directories
+.project
+.settings
+.cache
+README.md
+.idea

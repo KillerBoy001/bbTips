@@ -1,1 +1,691 @@
-if( typeof $WH=="undefined"){$WH={wowheadRemote:true};} ;if( typeof $WH=="undefined"){$WH={wowheadRemote:true};} ;if( typeof $WowheadPower=="undefined"){var $WowheadPower= new function (){var X=$WH["wowheadRemote"];var B={applyto:3},v=document["getElementsByTagName"]("head")[0],k,Q,U,L,x,ab,O,M,m=0,af=false,P={},l={},C={},J={},V={},ai={},h={},i={},g={},aa=1,E=1,T=0,R=1,n=2,y=3,S=4,W=5,z=1,p=2,G=3,K=5,A=6,s=10,d=101,o=100,u=15,I=15,F={loading:"Loading...",noresponse:"No response from server :(",achievementcomplete:"Achievement earned by $1 on $2/$3/$4"},w={1:[P,"npc","NPC"],2:[l,"object","Object"],3:[C,"item","Item"],5:[J,"quest","Quest"],6:[V,"spell","Spell"],10:[ai,"achievement","Achievement"],100:[g,"profile","Profile"],101:[h,"transmog-set","Transmog Set"]},ah={3:{url:"/data=item-scaling"},6:{url:"/data=spell-scaling"}},f={0:"enus",2:"frfr",3:"dede",6:"eses",7:"ruru",ptr:"ptr",beta:"beta"},c={wotlk:"www",cata:"www"};if(X){var b={getId:function (){return 0;} ,getName:function (){return "enus";} };} ;function ac(){if(X){var ak=document["createElement"]("script");ak["src"]= template_path + "/basic.js?5";v["appendChild"](ak);} else {Y();var al=$WH["isset"]("g_ptractive")&&g_ptractive;if(!al){c["ptr"]="www";} ;} ;} ;function Y(){if(af){return ;} ;af=true;$WH["aE"](document,"mouseover",D);} ;this["init"]=function (){if(X){$WH["ae"](v,$WH["ce"]("link",{type:"text/css",href: theme_path + "/bbtips.css?5",rel:"stylesheet"}));} ;Y();} ;function t(ak){var al=$WH["g_getCursorPos"](ak);O=al["x"];M=al["y"];} ;function ae(ay,au){if(ay["nodeName"]!="A"&&ay["nodeName"]!="AREA"){return -2323;} ;if(!ay["href"]["length"]&&!ay["rel"]){return ;} ;if(ay["rel"]&&ay["rel"]["indexOf"]("np")!=-1){return ;} ;var ap,ao,am,al,aq={};x=aq;var ak=function (az,aB,aA){if(aB=="buff"||aB=="sock"||aB=="map"){aq[aB]=true;} else {if(aB=="rand"||aB=="ench"||aB=="lvl"||aB=="c"||aB=="diff"){aq[aB]=parseInt(aA);} else {if(aB=="gems"||aB=="pcs"||aB=="forg"||aB=="know"){aq[aB]=aA["split"](":");} else {if(aB=="who"||aB=="domain"){aq[aB]=aA;} else {if(aB=="when"){aq[aB]= new Date(parseInt(aA));} ;} ;} ;} ;} ;} ;var at=false;if(B["applyto"]&1){ao=2;am=3;if(ay["href"]["indexOf"]("http://")==0||ay["href"]["indexOf"]("https://")==0){ap=1;al=ay["href"]["match"](/^https?:\/\/(.+?)?\.?(?:wowhead|thottbot)\.com\/\??(item|quest|spell|achievement|transmog-set|statistic|npc|object)=([0-9]+)/);if(al==null){al=ay["href"]["match"](/^https?:\/\/(.+?)?\.?(?:wowhead|thottbot)\.com\/\??(profile)=([^&#]+)/);} ;E=0;} else {at=true;al=ay["href"]["match"](/()\/\??(item|quest|spell|achievement|transmog-set|statistic|npc|object)=([0-9]+)/);if(al==null){al=ay["href"]["match"](/()\/\??(profile)=([^&#]+)/);} ;E=1;} ;} ;if(al==null&&ay["rel"]&&(B["applyto"]&2)){ap=0;ao=1;am=2;al=ay["rel"]["match"](/(item|quest|spell|achievement|transmog-set|statistic|npc|object).?([0-9]+)/);if(al==null){al=ay["rel"]["match"](/(profile).?([^&#]+)/);} ;E=1;} ;ay["href"]["replace"](/([a-zA-Z]+)=?([a-zA-Z0-9:-]*)/g,ak);if(ay["rel"]){ay["rel"]["replace"](/([a-zA-Z]+)=?([a-zA-Z0-9:-]*)/g,ak);} ;if(aq["gems"]&&aq["gems"]["length"]>0){var ar;for(ar=Math["min"](3,aq["gems"]["length"]-1);ar>=0;--ar){if(parseInt(aq["gems"][ar])){break ;} ;} ;++ar;if(ar==0){delete aq["gems"];} else {if(ar<aq["gems"]["length"]){aq["gems"]=aq["gems"]["slice"](0,ar);} ;} ;} ;if(al){var ax,an="www";ab=ay;if(aq["domain"]){an=aq["domain"];} else {if(ap&&al[ap]){an=al[ap]["split"](".")[0];} else {if(at){if($WH["isset"]("g_beta")&&g_beta){an="cata";} else {if($WH["isset"]("g_ptr")&&g_ptr){an="ptr";} else {if($WH["isset"]("g_old")&&g_old){an="old";} ;} ;} ;} ;} ;} ;if(c[an]){an=c[an];} ;ax=$WH["g_getLocaleFromDomain"](an);if(an=="ptr"){ax="ptr";} else {if(an=="beta"||an=="cata"){ax="beta";} ;} ;L=an;if(ay["href"]["indexOf"]("#")!=-1&&document["location"]["href"]["indexOf"](al[ao]+"="+al[am])!=-1){return ;} ;m=((ay["parentNode"]["className"]["indexOf"]("icon")==0&&ay["parentNode"]["nodeName"]=="DIV")?1:0);if(!ay["onmouseout"]){if(m==0){ay["onmousemove"]=a;} ;ay["onmouseout"]=ad;} ;t(au);var aw=$WH["g_getIdFromTypeName"](al[ao]),av=al[am];H(aw,av,ax,aq);} ;} ;function D(am){am=$WH.$E(am);var al=am["_target"];var ak=0;while(al!=null&&ak<5&&ae(al,am)==-2323){al=al["parentNode"];++ak;} ;} ;function a(ak){ak=$WH.$E(ak);t(ak);$WH["Tooltip"]["move"](O,M,0,0,u,I);} ;function ad(){k=null;ab=null;$WH["Tooltip"]["hide"]();} ;function Z(ak,al){return (x&&x["buff"]?"buff":"tooltip")+(al?al:"")+"_"+f[ak];} ;function aj(ak){return (x&&x["buff"]?"buff":"")+"spells_"+f[ak];} ;function q(al,an,am){var ak=w[al][0];if(ak[an]==null){ak[an]={};} ;if(ak[an]["status"]==null){ak[an]["status"]={};} ;if(ak[an]["response"]==null){ak[an]["response"]={};} ;if(ak[an]["status"][am]==null){ak[an]["status"][am]=T;} ;} ;function H(al,ap,an,ao){if(!ao){ao={};} ;var am=j(ap,ao);k=al;Q=am;U=an;x=ao;q(al,am,an);var ak=w[al][0];if(ak[am]["status"][an]==S||ak[am]["status"][an]==y){ag(ak[am][Z(an)],ak[am]["icon"],ak[am]["map"],ak[am][aj(an)],ak[am][Z(an,2)]);} else {if(ak[am]["status"][an]==R||ak[am]["status"][an]==W){ag(F["loading"]);} else {e(al,ap,an,null,ao);} ;} ;} ;function e(au,ao,av,am,ap){var ak=j(ao,ap);var ar=w[au][0];if(ar[ak]["status"][av]!=T&&ar[ak]["status"][av]!=n){return ;} ;ar[ak]["status"][av]=R;if(!am){ar[ak]["timer"]=setTimeout(function (){r["apply"](this,[au,ak,av]);} ,333);} ;var an="";for(var aq in ap){if(aq!="rand"&&aq!="ench"&&aq!="gems"&&aq!="sock"&&aq!="diff"){continue ;} ;if( typeof ap[aq]=="object"){an+="\x26"+aq+"="+ap[aq]["join"](":");} else {if(ap[aq]===true){an+="\x26"+aq;} else {an+="\x26"+aq+"="+ap[aq];} ;} ;} ;var at=$WH["g_getDomainFromLocale"](av);if(av=="ptr"){at="ptr";} else {if(av=="beta"){at="cata";} ;} ;var al="";if( typeof g_dev=="undefined"||!g_dev){al+=document["location"]["protocol"]+"//"+at+".wowhead.com";} else {if(window["location"]["hostname"]["indexOf"]("dev.wowhead.com")!=-1){if(at!="www"&&window["location"]["hostname"]["indexOf"](at)!=0){al+=document["location"]["protocol"]+"//"+at+"."+window["location"]["hostname"];} ;} ;} ;$WH["g_ajaxIshRequest"](al+"/"+w[au][1]+"="+ao+"\x26power"+an);if(ah[au]&&!ah[au][av]){$WH["g_ajaxIshRequest"](al+ah[au]["url"]);} ;} ;function ag(ap,av,ak,au,at){if(ab&&ab["_fixTooltip"]){ap=ab._fixTooltip(ap,k,Q,ab);} ;var aw=false;if(!ap){ap=w[k][2]+" not found :(";av="inv_misc_questionmark";aw=true;} else {if(x!=null){if(x["forg"]&&$WH["g_reforgeStats"][x["forg"]]){var ar=$WH["g_reforgeStats"][x["forg"]];var ay=[ar["i1"]];for(var ao in $WH["g_individualToGlobalStat"]){if($WH["g_individualToGlobalStat"][ao]==ay[0]){ay["push"](ao);} ;} ;var am;if((am=ap["match"]( new RegExp("(\x3C!--(stat|rtg)("+ay["join"]("|")+")--\x3E)[+-]?([0-9]+)")))&&!ap["match"]( new RegExp("\x3C!--(stat|rtg)"+ar["i2"]+"--\x3E[+-]?[0-9]+"))){var ax=Math["floor"](am[4]*ar["v"]),an=LANG["traits"][ar["s2"]][0];if(ar["i2"]==6){ap=ap["replace"]("\x3C!--rs--\x3E","\x3Cbr /\x3E+"+ax+" "+an);} else {ap=ap["replace"]("\x3C!--rr--\x3E",$WH["sprintfa"](LANG["tooltip_genericrating"],an["toLowerCase"](),ar["i2"],ax));} ;ap=ap["replace"](am[0],am[1]+(am[4]-ax));ap=ap["replace"]("\x3C!--rf--\x3E","\x3Cspan class=\x22q2\x22\x3E"+$WH["sprintfa"](LANG["tooltip_reforged"],ax,LANG["traits"][ar["s1"]][2],LANG["traits"][ar["s2"]][2])+"\x3C/span\x3E\x3Cbr /\x3E");} ;} ;if(x["pcs"]&&x["pcs"]["length"]){var az=Q["match"](/^(\d+)/);az=az[1];var al=0;for(var ao=0,aq=x["pcs"]["length"];ao<aq;++ao){var am;if(am=ap["match"]( new RegExp("\x3Cspan\x3E\x3C!--si([0-9]+:)*"+x["pcs"][ao]+"(:[0-9]+)*--\x3E\x3Ca href=\x22/??item=(\x5Cd+)\x22\x3E(.+?)\x3C/a\x3E\x3C/span\x3E"))){ap=ap["replace"](am[0],"\x3Cspan class=\x22q8\x22\x3E\x3C!--si"+x["pcs"][ao]+"--\x3E\x3Ca href=\x22/item="+am[3]+"\x22\x3E"+(($WH["isset"]("g_items")&&g_items[x["pcs"][ao]])?g_items[x["pcs"][ao]]["name_"+f[U]]:am[4])+"\x3C/a\x3E\x3C/span\x3E");++al;} ;} ;if(al>0){ap=ap["replace"]("(0/","("+al+"/");ap=ap["replace"]( new RegExp("\x3Cspan\x3E\x5C(([0-"+al+"])\x5C)","g"),"\x3Cspan class=\x22q2\x22\x3E($1)");} ;} ;if(x["know"]&&x["know"]["length"]){ap=$WH["g_setTooltipSpells"](ap,x["know"],au);} ;if(x["lvl"]){ap=$WH["g_setTooltipLevel"](ap,x["lvl"],x["buff"]);} ;if(x["who"]&&x["when"]){ap=ap["replace"]("\x3Ctable\x3E\x3Ctr\x3E\x3Ctd\x3E\x3Cbr /\x3E","\x3Ctable\x3E\x3Ctr\x3E\x3Ctd\x3E\x3Cbr /\x3E\x3Cspan class=\x22q2\x22\x3E"+$WH["sprintf"](F["achievementcomplete"],x["who"],x["when"]["getMonth"]()+1,x["when"]["getDate"](),x["when"]["getFullYear"]())+"\x3C/span\x3E\x3Cbr /\x3E\x3Cbr /\x3E");ap=ap["replace"](/class="q0"/g,"class=\x22r3\x22");} ;} ;} ;if(x["map"]&&ak&&ak["getMap"]){at=ak["getMap"]();} ;if(m==1){$WH["Tooltip"]["setIcon"](null);$WH["Tooltip"]["show"](ab,ap,null,null,null,at);} else {$WH["Tooltip"]["setIcon"](av);$WH["Tooltip"]["showAtXY"](ap,O,M,u,I,at);} ;if(X&&$WH["Tooltip"]["logo"]){$WH["Tooltip"]["logo"]["style"]["display"]=(E?"block":"none");} ;} ;function r(al,an,am){if(k==al&&Q==an&&U==am){ag(F["loading"]);var ak=w[al][0];ak[an]["timer"]=setTimeout(function (){N["apply"](this,[al,an,am]);} ,3850);} ;} ;function N(al,an,am){var ak=w[al][0];ak[an]["status"][am]=n;if(k==al&&Q==an&&U==am){ag(F["noresponse"]);} ;} ;function j(al,ak){return al+(ak["rand"]?"r"+ak["rand"]:"")+(ak["ench"]?"e"+ak["ench"]:"")+(ak["gems"]?"g"+ak["gems"]["join"](","):"")+(ak["sock"]?"s":"");} ;this["loadScales"]=function (am,an){var ak=w[am][0];for(var al in f){if(an==al||(!an&&!isNaN(al))){ah[am][al]=1;for(var ao in ak){if(ak[ao]["status"][al]==W&&ak[ao]["response"][al]){ak[ao]["response"][al]();} ;} ;} ;} ;} ;this["register"]=function (am,ao,an,al){var ak=w[am][0];q(am,ao,an);if(ah[am]&&!ah[am][an]){ak[ao]["status"][an]=W;ak[ao]["response"][an]=this["register"]["bind"](this,am,ao,an,al);return ;} ;if(ak[ao]["timer"]){clearTimeout(ak[ao]["timer"]);ak[ao]["timer"]=null;} ;if(!$WH["wowheadRemote"]&&al["map"]){if(ak[ao]["map"]==null){ak[ao]["map"]= new Mapper({parent:$WH["ce"]("div"),zoom:3,zoomable:false,buttons:false});} ;ak[ao]["map"]["update"](al["map"]);delete al["map"];} ;$WH["cO"](ak[ao],al);if(ak[ao]["status"][an]==R||ak[ao]["status"][an]==W){if(ak[ao][Z(an)]){ak[ao]["status"][an]=S;} else {ak[ao]["status"][an]=y;} ;} ;if(k==am&&ao==Q&&U==an){ag(ak[ao][Z(an)],ak[ao]["icon"],ak[ao]["map"],ak[ao][aj(an)],ak[ao][Z(an,2)]);} ;} ;this["registerNpc"]=function (am,al,ak){this["register"](z,am,al,ak);} ;this["registerObject"]=function (am,al,ak){this["register"](p,am,al,ak);} ;this["registerItem"]=function (am,al,ak){this["register"](G,am,al,ak);} ;this["registerTransmogSet"]=function (am,al,ak){this["register"](d,am,al,ak);} ;this["registerQuest"]=function (am,al,ak){this["register"](K,am,al,ak);} ;this["registerSpell"]=function (am,al,ak){this["register"](A,am,al,ak);} ;this["registerAchievement"]=function (am,al,ak){this["register"](s,am,al,ak);} ;this["registerProfile"]=function (am,al,ak){this["register"](o,am,al,ak);} ;this["request"]=function (ak,ao,am,an){if(!an){an={};} ;var al=j(ao,an);q(ak,al,am);e(ak,ao,am,1,an);} ;this["requestItem"]=function (al,ak){this["request"](G,al,b["getId"](),ak);} ;this["requestSpell"]=function (ak){this["request"](A,ak,b["getId"]());} ;this["getStatus"]=function (al,an,am){var ak=w[al][0];if(ak[an]!=null){return ak[an]["status"][am];} else {return T;} ;} ;this["getItemStatus"]=function (al,ak){this["getStatus"](G,al,ak);} ;this["getSpellStatus"]=function (al,ak){this["getStatus"](A,al,ak);} ;if(X){this["set"]=function (ak){$WH["cO"](B,ak);} ;this["showTooltip"]=function (am,ak,al){t(am);ag(ak,al);} ;this["hideTooltip"]=function (){$WH["Tooltip"]["hide"]();} ;this["moveTooltip"]=function (ak){a(ak);} ;} ;ac();} ;} ;
+/*
+ * power.js
+ * wowhead.com
+ * modified for local use in phpbb
+ * bbTips 1.0.2
+ */
+
+if (typeof $WH == "undefined") {
+	$WH = {
+		wowheadRemote : true
+	}
+}
+if (typeof $WowheadPower == "undefined") {
+	var $WowheadPower = new function() {
+		var isRemote = $WH.wowheadRemote;
+		var opt = {
+			applyto : 3
+		}, head = document.getElementsByTagName("head")[0], currentType, currentId, currentLocale, currentDomain, currentParams, currentA, cursorX, cursorY, mode = 0, eventAttached = false, npcs = {}, objects = {}, items = {}, quests = {}, spells = {}, achievements = {}, transmogsets = {}, statistics = {}, profiles = {}, petabilities = {}, showIcon = 1, showLogo = 1, STATUS_NONE = 0, STATUS_QUERYING = 1, STATUS_ERROR = 2, STATUS_NOTFOUND = 3, STATUS_OK = 4, STATUS_SCALES = 5, TYPE_NPC = 1, TYPE_OBJECT = 2, TYPE_ITEM = 3, TYPE_QUEST = 5, TYPE_SPELL = 6, TYPE_ACHIEVEMENT = 10, TYPE_TRANSMOGSET = 101, TYPE_PROFILE = 100, TYPE_PETABILITY = 200, CURSOR_HSPACE = 15, CURSOR_VSPACE = 15, _LANG = {
+			loading : "Loading...",
+			noresponse : "No response from server :(",
+			achievementcomplete : "Achievement earned by $1 on $2/$3/$4"
+		}, LOOKUPS = {
+			1 : [ npcs, "npc", "NPC" ],
+			2 : [ objects, "object", "Object" ],
+			3 : [ items, "item", "Item" ],
+			5 : [ quests, "quest", "Quest" ],
+			6 : [ spells, "spell", "Spell" ],
+			10 : [ achievements, "achievement", "Achievement" ],
+			100 : [ profiles, "profile", "Profile" ],
+			101 : [ transmogsets, "transmog-set", "Transmog Set" ],
+			200 : [ petabilities, "petability", "Pet Ability" ]
+		}, SCALES = {
+			3 : {
+				url : "/data=item-scaling"
+			},
+			6 : {
+				url : "/data=spell-scaling"
+			}
+		}, LOCALES = {
+			0 : "enus",
+			2 : "frfr",
+			3 : "dede",
+			6 : "eses",
+			7 : "ruru",
+			8 : "ptbr",
+			ptr : "ptr",
+			beta : "beta"
+		}, REDIRECTS = {
+			wotlk : "www",
+			cata : "www",
+			mop : "www"
+		};
+		if (isRemote) {
+			var Locale = {
+				getId : function() {
+					return 0
+				},
+				getName : function() {
+					return "enus"
+				}
+			}
+		}
+		function init() {
+			if (isRemote) {
+				var script = document.createElement("script");
+				/*script.src = "//wowjs.zamimg.com/js/basic.js?5";*/
+				script.src = template_path + "/basic.js?5";
+				head.appendChild(script)
+			} else {
+				attachEvent();
+				var ptrIsActive = $WH.isset("g_ptractive") && g_ptractive;
+				if (!ptrIsActive) {
+					REDIRECTS.ptr = "www"
+				}
+			}
+		}
+		function attachEvent() {
+			if (eventAttached) {
+				return
+			}
+			eventAttached = true;
+			$WH.aE(document, "mouseover", onMouseOver)
+		}
+		this.init = function() {
+			if (isRemote) {
+				/*
+				$WH.ae(head, $WH.ce("link", {
+					type : "text/css",
+					href : "//wowcss.zamimg.com/css/basic.css?5",
+					rel : "stylesheet"
+				}))
+				*/
+				$WH.ae(head, $WH.ce("link", {
+					type : "text/css",
+					href : theme_path + "/bbtips.css?5",
+					rel : "stylesheet"
+				}));
+			}
+			attachEvent();
+			if (typeof wowhead_tooltips != "undefined") {
+				for ( var i = 0; i < document.links.length; i++) {
+					var link = document.links[i];
+					scanElement(link)
+				}
+			}
+		};
+		function updateCursorPos(e) {
+			var pos = $WH.g_getCursorPos(e);
+			cursorX = pos.x;
+			cursorY = pos.y
+		}
+		function scanElement(t, e) {
+			if (t.nodeName != "A" && t.nodeName != "AREA") {
+				return -2323
+			}
+			if (!t.href.length && !t.rel) {
+				return
+			}
+			if (t.rel && t.rel.indexOf("np") != -1) {
+				return
+			}
+			var i0, i1, i2, m, params = {};
+			currentParams = params;
+			var p = function(m, k, v) {
+				if (k == "buff" || k == "sock" || k == "map") {
+					params[k] = true
+				} else {
+					if (k == "rand" || k == "ench" || k == "lvl" || k == "c"
+							|| k == "diff" || k == "upgd") {
+						params[k] = parseInt(v)
+					} else {
+						if (k == "gems" || k == "pcs" || k == "forg"
+								|| k == "know") {
+							params[k] = v.split(":")
+						} else {
+							if (k == "who" || k == "domain") {
+								params[k] = v
+							} else {
+								if (k == "when") {
+									params[k] = new Date(parseInt(v))
+								}
+							}
+						}
+					}
+				}
+			};
+			var relativeUrl = false;
+			if (opt.applyto & 1) {
+				i1 = 2;
+				i2 = 3;
+				if (t.href.indexOf("http://") == 0
+						|| t.href.indexOf("https://") == 0) {
+					i0 = 1;
+					m = t.href
+							.match(/^https?:\/\/(.+?)?\.?(?:wowhead|thottbot)\.com(?:\:\d+)?\/\??(item|quest|spell|achievement|transmog-set|statistic|npc|object|petability)=([0-9]+)/);
+					if (m == null) {
+						m = t.href
+								.match(/^https?:\/\/(.+?)?\.?(?:wowhead|thottbot)\.com(?:\:\d+)?\/\??(profile)=([^&#]+)/)
+					}
+					showLogo = 0
+				} else {
+					relativeUrl = true;
+					m = t.href
+							.match(/()\/\??(item|quest|spell|achievement|transmog-set|statistic|npc|object|petability)=([0-9]+)/);
+					if (m == null) {
+						m = t.href.match(/()\/\??(profile)=([^&#]+)/)
+					}
+					showLogo = 1
+				}
+			}
+			if (m == null && t.rel && (opt.applyto & 2)) {
+				i0 = 0;
+				i1 = 1;
+				i2 = 2;
+				m = t.rel
+						.match(/(item|quest|spell|achievement|transmog-set|statistic|npc|object|petability).?([0-9]+)/);
+				if (m == null) {
+					m = t.rel.match(/(profile).?([^&#]+)/)
+				}
+				showLogo = 1
+			}
+			t.href.replace(/([a-zA-Z]+)=?([a-zA-Z0-9:-]*)/g, p);
+			if (t.rel) {
+				t.rel.replace(/([a-zA-Z]+)=?([a-zA-Z0-9:-]*)/g, p)
+			}
+			if (params.gems && params.gems.length > 0) {
+				var i;
+				for (i = Math.min(3, params.gems.length - 1); i >= 0; --i) {
+					if (parseInt(params.gems[i])) {
+						break
+					}
+				}
+				++i;
+				if (i == 0) {
+					delete params.gems
+				} else {
+					if (i < params.gems.length) {
+						params.gems = params.gems.slice(0, i)
+					}
+				}
+			}
+			if (m) {
+				var locale, domain = "www";
+				currentA = t;
+				if (params.domain) {
+					domain = params.domain
+				} else {
+					if (i0 && m[i0]) {
+						domain = m[i0].split(".")[0]
+					} else {
+						if (relativeUrl) {
+							if ($WH.isset("g_beta") && g_beta) {
+								domain = "mop"
+							} else {
+								if ($WH.isset("g_ptr") && g_ptr) {
+									domain = "ptr"
+								} else {
+									if ($WH.isset("g_old") && g_old) {
+										domain = "old"
+									}
+								}
+							}
+						}
+					}
+				}
+				if (REDIRECTS[domain]) {
+					domain = REDIRECTS[domain]
+				}
+				locale = $WH.g_getLocaleFromDomain(domain);
+				if (domain == "ptr") {
+					locale = "ptr"
+				} else {
+					if (domain == "beta" || domain == "mop") {
+						locale = "beta"
+					}
+				}
+				currentDomain = domain;
+				if (t.href.indexOf("#") != -1
+						&& document.location.href.indexOf(m[i1] + "=" + m[i2]) != -1) {
+					return
+				}
+				mode = ((t.parentNode.className.indexOf("icon") == 0 && t.parentNode.nodeName == "DIV") ? 1
+						: 0);
+				if (!t.onmouseout) {
+					if (mode == 0) {
+						t.onmousemove = onMouseMove
+					}
+					t.onmouseout = onMouseOut
+				}
+				if (e) {
+					updateCursorPos(e)
+				}
+				var type = $WH.g_getIdFromTypeName(m[i1]), typeId = m[i2];
+				display(type, typeId, locale, params);
+				if (e || typeof wowhead_tooltips == "undefined") {
+					return
+				}
+				var data = LOOKUPS[type][0][typeId];
+				var timeout = function(t) {
+					if (data.status[locale] != STATUS_OK
+							&& data.status[locale] != STATUS_NOTFOUND) {
+						window.setTimeout(function() {
+							timeout(t)
+						}, 5);
+						return
+					}
+					if (wowhead_tooltips.renamelinks) {
+						eval("t.innerHTML = '<span>' + data.name_"
+								+ LOCALES[locale] + " + '</span>';")
+					}
+					if (wowhead_tooltips.iconizelinks
+							&& (type == TYPE_ITEM || type == TYPE_ACHIEVEMENT || type == TYPE_SPELL)) {
+						t.children[0].style.marginLeft = "18px";
+						t.className += " icontinyl";
+						t.style.paddingLeft = "18px !important";
+						t.style.verticalAlign = "center";
+						t.style.background = "url(//wowimg.zamimg.com/images/wow/icons/tiny/"
+								+ data.icon.toLocaleLowerCase()
+								+ ".gif) left center no-repeat"
+					}
+					if (wowhead_tooltips.colorlinks) {
+						if (type == TYPE_ITEM) {
+							t.className += " q" + data.quality
+						} else {
+						}
+					}
+				};
+				timeout(t)
+			}
+		}
+		function onMouseOver(e) {
+			e = $WH.$E(e);
+			var t = e._target;
+			var i = 0;
+			while (t != null && i < 5 && scanElement(t, e) == -2323) {
+				t = t.parentNode;
+				++i
+			}
+		}
+		function onMouseMove(e) {
+			e = $WH.$E(e);
+			updateCursorPos(e);
+			$WH.Tooltip.move(cursorX, cursorY, 0, 0, CURSOR_HSPACE,
+					CURSOR_VSPACE)
+		}
+		function onMouseOut() {
+			currentType = null;
+			currentA = null;
+			$WH.Tooltip.hide()
+		}
+		function getTooltipField(locale, n) {
+			return (currentParams && currentParams.buff ? "buff" : "tooltip")
+					+ (n ? n : "") + "_" + LOCALES[locale]
+		}
+		function getSpellsField(locale) {
+			return (currentParams && currentParams.buff ? "buff" : "")
+					+ "spells_" + LOCALES[locale]
+		}
+		function initElement(type, id, locale) {
+			var arr = LOOKUPS[type][0];
+			if (arr[id] == null) {
+				arr[id] = {}
+			}
+			if (arr[id].status == null) {
+				arr[id].status = {}
+			}
+			if (arr[id].response == null) {
+				arr[id].response = {}
+			}
+			if (arr[id].status[locale] == null) {
+				arr[id].status[locale] = STATUS_NONE
+			}
+		}
+		function display(type, id, locale, params) {
+			if (!params) {
+				params = {}
+			}
+			var fullId = getFullId(id, params);
+			currentType = type;
+			currentId = fullId;
+			currentLocale = locale;
+			currentParams = params;
+			initElement(type, fullId, locale);
+			var arr = LOOKUPS[type][0];
+			if (arr[fullId].status[locale] == STATUS_OK
+					|| arr[fullId].status[locale] == STATUS_NOTFOUND) {
+				showTooltip(arr[fullId][getTooltipField(locale)],
+						arr[fullId].icon, arr[fullId].map,
+						arr[fullId][getSpellsField(locale)],
+						arr[fullId][getTooltipField(locale, 2)])
+			} else {
+				if (arr[fullId].status[locale] == STATUS_QUERYING
+						|| arr[fullId].status[locale] == STATUS_SCALES) {
+					showTooltip(_LANG.loading)
+				} else {
+					request(type, id, locale, null, params)
+				}
+			}
+		}
+		function request(type, id, locale, stealth, params) {
+			var fullId = getFullId(id, params);
+			var arr = LOOKUPS[type][0];
+			if (arr[fullId].status[locale] != STATUS_NONE
+					&& arr[fullId].status[locale] != STATUS_ERROR) {
+				return
+			}
+			arr[fullId].status[locale] = STATUS_QUERYING;
+			if (!stealth) {
+				arr[fullId].timer = setTimeout(function() {
+					showLoading.apply(this, [ type, fullId, locale ])
+				}, 333)
+			}
+			var p = "";
+			for ( var i in params) {
+				if (i != "rand" && i != "ench" && i != "gems" && i != "sock"
+						&& i != "diff" && i != "upgd") {
+					continue
+				}
+				if (typeof params[i] == "object") {
+					p += "&" + i + "=" + params[i].join(":")
+				} else {
+					if (params[i] === true) {
+						p += "&" + i
+					} else {
+						p += "&" + i + "=" + params[i]
+					}
+				}
+			}
+			var localeDomain = $WH.g_getDomainFromLocale(locale);
+			if (locale == "ptr") {
+				localeDomain = "ptr"
+			} else {
+				if (locale == "beta") {
+					localeDomain = "mop"
+				}
+			}
+			var url = "";
+			if (typeof g_dev == "undefined" || !g_dev) {
+				url += document.location.protocol + "//" + localeDomain
+						+ ".wowhead.com"
+			} else {
+				if (window.location.hostname.indexOf("dev.wowhead.com") != -1) {
+					if (localeDomain != "www"
+							&& window.location.hostname.indexOf(localeDomain) != 0) {
+						url += document.location.protocol + "//" + localeDomain
+								+ "." + window.location.hostname
+					}
+				}
+			}
+			$WH.g_ajaxIshRequest(url + "/" + LOOKUPS[type][1] + "=" + id
+					+ "&power" + p);
+			if (SCALES[type] && !SCALES[type][locale]) {
+				$WH.g_ajaxIshRequest(url + SCALES[type].url)
+			}
+		}
+		function showTooltip(html, icon, map, spellData, html2) {
+			if (currentA && currentA._fixTooltip) {
+				html = currentA._fixTooltip(html, currentType, currentId,
+						currentA)
+			}
+			var notFound = false;
+			if (!html) {
+				html = LOOKUPS[currentType][2] + " not found :(";
+				icon = "inv_misc_questionmark";
+				notFound = true
+			} else {
+				if (currentParams != null) {
+					if (currentParams.forg
+							&& $WH.g_reforgeStats[currentParams.forg]) {
+						var reforge = $WH.g_reforgeStats[currentParams.forg];
+						var _ = [ reforge.i1 ];
+						for ( var i in $WH.g_individualToGlobalStat) {
+							if ($WH.g_individualToGlobalStat[i] == _[0]) {
+								_.push(i)
+							}
+						}
+						var m;
+						if ((m = html.match(new RegExp("(<!--(stat|rtg)("
+								+ _.join("|") + ")-->)[+-]?([0-9]+)")))
+								&& !html.match(new RegExp("<!--(stat|rtg)"
+										+ reforge.i2 + "-->[+-]?[0-9]+"))) {
+							var value = Math.floor(m[4] * reforge.v), statName = LANG.traits[reforge.s2][0];
+							if (reforge.i2 == 6) {
+								html = html.replace("<!--rs-->", "<br />+"
+										+ value + " " + statName)
+							} else {
+								html = html.replace("<!--rr-->", $WH.sprintfa(
+										LANG.tooltip_genericrating, statName
+												.toLowerCase(), reforge.i2,
+										value))
+							}
+							html = html.replace(m[0], m[1] + (m[4] - value));
+							html = html.replace("<!--rf-->",
+									'<span class="q2">'
+											+ $WH.sprintfa(
+													LANG.tooltip_reforged,
+													value,
+													LANG.traits[reforge.s1][2],
+													LANG.traits[reforge.s2][2])
+											+ "</span><br />")
+						}
+					}
+					if (currentParams.pcs && currentParams.pcs.length) {
+						var itemId = currentId.match(/^(\d+)/);
+						itemId = itemId[1];
+						var n = 0;
+						for ( var i = 0, len = currentParams.pcs.length; i < len; ++i) {
+							var m;
+							if (m = html
+									.match(new RegExp(
+											"<span><!--si([0-9]+:)*"
+													+ currentParams.pcs[i]
+													+ '(:[0-9]+)*--><a href="/??item=(\\d+)">(.+?)</a></span>'))) {
+								html = html
+										.replace(
+												m[0],
+												'<span class="q8"><!--si'
+														+ currentParams.pcs[i]
+														+ '--><a href="/item='
+														+ m[3]
+														+ '">'
+														+ (($WH
+																.isset("g_items") && g_items[currentParams.pcs[i]]) ? g_items[currentParams.pcs[i]]["name_"
+																+ LOCALES[currentLocale]]
+																: m[4])
+														+ "</a></span>");
+								++n
+							}
+						}
+						if (n > 0) {
+							html = html.replace("(0/", "(" + n + "/");
+							html = html.replace(new RegExp("<span>\\(([0-" + n
+									+ "])\\)", "g"), '<span class="q2">($1)')
+						}
+					}
+					if (currentParams.know && currentParams.know.length) {
+						html = $WH.g_setTooltipSpells(html, currentParams.know,
+								spellData)
+					}
+					if (currentParams.lvl) {
+						html = $WH.g_setTooltipLevel(html, currentParams.lvl,
+								currentParams.buff)
+					}
+					if (currentParams.who && currentParams.when) {
+						html = html
+								.replace(
+										"<table><tr><td><br />",
+										'<table><tr><td><br /><span class="q2">'
+												+ $WH
+														.sprintf(
+																_LANG.achievementcomplete,
+																currentParams.who,
+																currentParams.when
+																		.getMonth() + 1,
+																currentParams.when
+																		.getDate(),
+																currentParams.when
+																		.getFullYear())
+												+ "</span><br /><br />");
+						html = html.replace(/class="q0"/g, 'class="r3"')
+					}
+				}
+			}
+			if (currentParams.map && map && map.getMap) {
+				html2 = map.getMap()
+			}
+			if (mode == 1) {
+				$WH.Tooltip.setIcon(null);
+				$WH.Tooltip.show(currentA, html, null, null, null, html2)
+			} else {
+				$WH.Tooltip.setIcon(icon);
+				$WH.Tooltip.showAtXY(html, cursorX, cursorY, CURSOR_HSPACE,
+						CURSOR_VSPACE, html2)
+			}
+			if (isRemote && $WH.Tooltip.logo) {
+				$WH.Tooltip.logo.style.display = (showLogo ? "block" : "none")
+			}
+		}
+		function showLoading(type, id, locale) {
+			if (currentType == type && currentId == id
+					&& currentLocale == locale) {
+				showTooltip(_LANG.loading);
+				var arr = LOOKUPS[type][0];
+				arr[id].timer = setTimeout(function() {
+					notFound.apply(this, [ type, id, locale ])
+				}, 3850)
+			}
+		}
+		function notFound(type, id, locale) {
+			var arr = LOOKUPS[type][0];
+			arr[id].status[locale] = STATUS_ERROR;
+			if (currentType == type && currentId == id
+					&& currentLocale == locale) {
+				showTooltip(_LANG.noresponse)
+			}
+		}
+		function getFullId(id, params) {
+			return id + (params.rand ? "r" + params.rand : "")
+					+ (params.ench ? "e" + params.ench : "")
+					+ (params.gems ? "g" + params.gems.join(",") : "")
+					+ (params.sock ? "s" : "")
+					+ (params.upgd ? "u" + params.upgd : "")
+		}
+		this.loadScales = function(type, locale) {
+			var arr = LOOKUPS[type][0];
+			for ( var i in LOCALES) {
+				if (locale == i || (!locale && !isNaN(i))) {
+					SCALES[type][i] = 1;
+					for ( var id in arr) {
+						if (arr[id].status[i] == STATUS_SCALES
+								&& arr[id].response[i]) {
+							arr[id].response[i]()
+						}
+					}
+				}
+			}
+		};
+		this.register = function(type, id, locale, json) {
+			var arr = LOOKUPS[type][0];
+			initElement(type, id, locale);
+			if (SCALES[type] && !SCALES[type][locale]) {
+				arr[id].status[locale] = STATUS_SCALES;
+				arr[id].response[locale] = this.register.bind(this, type, id,
+						locale, json);
+				return
+			}
+			if (arr[id].timer) {
+				clearTimeout(arr[id].timer);
+				arr[id].timer = null
+			}
+			if (!$WH.wowheadRemote && json.map) {
+				if (arr[id].map == null) {
+					arr[id].map = new Mapper({
+						parent : $WH.ce("div"),
+						zoom : 3,
+						zoomable : false,
+						buttons : false
+					})
+				}
+				arr[id].map.update(json.map);
+				delete json.map
+			}
+			$WH.cO(arr[id], json);
+			if (arr[id].status[locale] == STATUS_QUERYING
+					|| arr[id].status[locale] == STATUS_SCALES) {
+				if (arr[id][getTooltipField(locale)]) {
+					arr[id].status[locale] = STATUS_OK
+				} else {
+					arr[id].status[locale] = STATUS_NOTFOUND
+				}
+			}
+			if (currentType == type && id == currentId
+					&& currentLocale == locale) {
+				showTooltip(arr[id][getTooltipField(locale)], arr[id].icon,
+						arr[id].map, arr[id][getSpellsField(locale)],
+						arr[id][getTooltipField(locale, 2)])
+			}
+		};
+		this.registerNpc = function(id, locale, json) {
+			this.register(TYPE_NPC, id, locale, json)
+		};
+		this.registerPetAbility = function(id, locale, json) {
+			this.register(TYPE_PETABILITY, id, locale, json)
+		};
+		this.registerObject = function(id, locale, json) {
+			this.register(TYPE_OBJECT, id, locale, json)
+		};
+		this.registerItem = function(id, locale, json) {
+			this.register(TYPE_ITEM, id, locale, json)
+		};
+		this.registerTransmogSet = function(id, locale, json) {
+			this.register(TYPE_TRANSMOGSET, id, locale, json)
+		};
+		this.registerQuest = function(id, locale, json) {
+			this.register(TYPE_QUEST, id, locale, json)
+		};
+		this.registerSpell = function(id, locale, json) {
+			this.register(TYPE_SPELL, id, locale, json)
+		};
+		this.registerAchievement = function(id, locale, json) {
+			this.register(TYPE_ACHIEVEMENT, id, locale, json)
+		};
+		this.registerProfile = function(id, locale, json) {
+			this.register(TYPE_PROFILE, id, locale, json)
+		};
+		this.request = function(type, id, locale, params) {
+			if (!params) {
+				params = {}
+			}
+			var fullId = getFullId(id, params);
+			initElement(type, fullId, locale);
+			request(type, id, locale, 1, params)
+		};
+		this.requestItem = function(id, params) {
+			this.request(TYPE_ITEM, id, Locale.getId(), params)
+		};
+		this.requestSpell = function(id) {
+			this.request(TYPE_SPELL, id, Locale.getId())
+		};
+		this.getStatus = function(type, id, locale) {
+			var arr = LOOKUPS[type][0];
+			if (arr[id] != null) {
+				return arr[id].status[locale]
+			} else {
+				return STATUS_NONE
+			}
+		};
+		this.getItemStatus = function(id, locale) {
+			this.getStatus(TYPE_ITEM, id, locale)
+		};
+		this.getSpellStatus = function(id, locale) {
+			this.getStatus(TYPE_SPELL, id, locale)
+		};
+		if (isRemote) {
+			this.set = function(foo) {
+				$WH.cO(opt, foo)
+			};
+			this.showTooltip = function(e, tooltip, icon) {
+				updateCursorPos(e);
+				showTooltip(tooltip, icon)
+			};
+			this.hideTooltip = function() {
+				$WH.Tooltip.hide()
+			};
+			this.moveTooltip = function(e) {
+				onMouseMove(e)
+			}
+		}
+		init()
+	}
+};

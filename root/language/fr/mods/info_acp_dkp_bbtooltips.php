@@ -5,7 +5,7 @@
  * @package bbDkp
  * @copyright 2009 bbdkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
+ * @version 1.0.4
  * 
  */
 
@@ -25,7 +25,7 @@ if (empty($lang) || !is_array($lang))
 
 // Merge the following language entries into the lang array
 $lang = array_merge($lang, array(
-	'ACP_DKP_DKPTOOLTIPS'	=> 'Règlages bbTips',  
+	'ACP_DKP_DKPTOOLTIPS'	=> 'bbTips',  
 	'ACP_CAT_BBTIPS'	=> 'bbTips', 
 
 ));

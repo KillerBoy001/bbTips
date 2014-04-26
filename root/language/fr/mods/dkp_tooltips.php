@@ -5,7 +5,7 @@
  * @package bbDkp
  * @copyright 2009 bbdkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id$
+ * @version 1.0.4
  * 
  */
 
@@ -49,7 +49,7 @@ $lang = array_merge($lang, array(
     'UMIL_BBCODE_REMOVED' => 'BBCodes supprimés',
 
     'ACP_BBTOOLTIPS' => 'Réglages Popup ',
-    'BBTOOLTIPS' => 'bbTips 0.4.3',
+    'BBTOOLTIPS' => 'bbTips 1.1',
     'BBTOOLTIPS_EXPLAIN' => 'BBCode pour Wowhead Tooltips',
 
     'BBTIPS_SETTING' => 'Règlages bbTips',
@@ -79,6 +79,8 @@ $lang = array_merge($lang, array(
 	'ITEMNOTFOUND' => '%s "%s" pas trouvé',
 	'INSERTFAILED' => 'l’objet %s n’a pas pu être inseré dans la base de données.',
 	'BBTOOLTIPS_SETTINGSAVED' => 'Paramètres BBTips sauvegardés', 
+	'BBTIPS_UNINSTALL_MOD'  => 'bbtips uninstalled',
+	'BBTIPS_INSTALL_MOD'  => 'bbtips installed'
 
 
 ));
