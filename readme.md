@@ -1,6 +1,6 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
 
-#bbTips v1.0.4
+#bbTips v1.0.5
 
 [Wowhead tooltips](http://www.wowhead.com/tooltips) lets you have tooltips on urls by wowhead Id. 
 
@@ -92,7 +92,7 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 `[craft mats]Recipe: Vial of the Sands[/craft]`
 
 ## Current
-v1.0.4
+v1.0.5
 
 ## Installation
 
@@ -109,6 +109,11 @@ v1.0.4
 
 
 ## Changelog
+-	2014-02-15 : 1.0.5 
+	-	supports the bbDKP news page 
+	-	supports Raidplanner 1.0
+
+	
 -	2014-02-15 : 1.0.4 :cactus: 
 	-	updated to phpBB 3.0.12
 	-	compatible with bbDKP 1.3.0

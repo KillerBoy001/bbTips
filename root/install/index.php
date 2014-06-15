@@ -1,12 +1,12 @@
 <?php
 /**
- * bbTips 1.0.4
+ * bbTips 1.0.5
  *
  * @package bbDkp-installer
  * @author sajaki9@gmail.com
  * @copyright (c) 2009 bbDkp https://github.com/bbDKP/bbtips
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 1.0.4
+ * @version 1.0.5
  *
  */
 
@@ -246,8 +246,14 @@ $versions = array(
     	//no db changes
      ),
     '1.0.4' => array(
-    	'custom' => array( 'pluginupdater', 'bbdkp_caches'),  //no db changes
+    	//no db changes
      ),
+    '1.0.5' => array(
+	    //no db changes
+    	'custom' => array( 'pluginupdater', 'bbdkp_caches'),  
+     ),
+     
+     
 );
 
 // Include the UMIF Auto file and everything else will be handled automatically.

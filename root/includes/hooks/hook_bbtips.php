@@ -6,9 +6,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @author sajaki <sajaki@gmail.com>
  * @link http://www.bbdkp.com
- * @version 1.0.4
- * Date: 11/02/14
- * Time: 15:25
+ * @version 1.0.5
  *
  */
 
@@ -53,6 +51,24 @@ function bbtipshooks(&$hook, $handle, $include_once = true)
             unset($bbtips);
         }
     }
+    elseif(isset($template->_tpldata['news_row'] ))
+    {
+        if(is_array($template->_tpldata['news_row']) && count($template->_tpldata['news_row'])>0)
+        {
+            if (!class_exists('bbtips_parser'))
+            {
+                require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_parser.' . $phpEx);
+            }
+            $bbtips = new bbtips_parser;
+
+            //parse all messages
+            foreach( $template->_tpldata['news_row'] as $key => $val)
+            {
+                $template->_tpldata['news_row'][$key]['MESSAGE'] = $bbtips->parse( $template->_tpldata['news_row'][$key]['MESSAGE'] );
+            }
+            unset($bbtips);
+        }
+    }
     else
     {
         //in preview mode
@@ -64,6 +80,16 @@ function bbtipshooks(&$hook, $handle, $include_once = true)
             }
             $bbtips = new bbtips_parser;
             $template->_tpldata['.'][0]['PREVIEW_MESSAGE'] = $bbtips->parse( $template->_tpldata['.'][0]['PREVIEW_MESSAGE']);
+            unset($bbtips);
+        }
+        elseif( isset($template->_tpldata['.'][0]['RAIDPLANNERMESSAGE']) )
+        {
+            if (!class_exists('bbtips_parser'))
+            {
+                require($phpbb_root_path . 'includes/bbdkp/bbtips/bbtips_parser.' . $phpEx);
+            }
+            $bbtips = new bbtips_parser;
+            $template->_tpldata['.'][0]['RAIDPLANNERMESSAGE'] = $bbtips->parse( $template->_tpldata['.'][0]['RAIDPLANNERMESSAGE']);
             unset($bbtips);
         }
     }
