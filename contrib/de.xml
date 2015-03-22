@@ -24,11 +24,11 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.4</mod-version>
+		<mod-version>1.0.6</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.11</target-version>
+			<target-version>3.0.13-PL1</target-version>
 		</installation>
 		<link-group>
 			<link type="parent" href="../install.xml" lang="en">Installation manual</link>

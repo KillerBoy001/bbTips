@@ -1,6 +1,6 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
 
-#bbTips v1.0.5
+#bbTips v1.0.6
 
 [Wowhead tooltips](http://www.wowhead.com/tooltips) lets you have tooltips on urls by wowhead Id. 
 
@@ -92,12 +92,12 @@ The Craft bbcode can be used with or without the mats argument. The mats argumen
 `[craft mats]Recipe: Vial of the Sands[/craft]`
 
 ## Current
-v1.0.5
+v1.0.6
 
 ## Installation
 
 #### Requirements
-1.	phpbb 3.0.12 
+1.	phpbb 3.0.12 or higher
 3.	ftp and founder admin access on your phpbb installation.
 
 #### MODX installation
@@ -109,7 +109,13 @@ v1.0.5
 
 
 ## Changelog
--	2014-02-15 : 1.0.5 
+-	2015-03-22 : 1.0.6
+	-	supports BBDKP 1.4
+	-	targets phpbb 3.0.13-PL1
+	-	supports the new bonus loot tag
+
+
+-	2014-02-15 : 1.0.5
 	-	supports the bbDKP news page 
 	-	supports Raidplanner 1.0
 
