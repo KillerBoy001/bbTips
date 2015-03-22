@@ -63,7 +63,8 @@ class bbtips_parser
 				if (  (count($match)>= 5) && (
 						strpos($match[2], 'lang=') !== false || strpos($match[2],'mats') !== false || strpos($match[2], 'enchant=') !== false ||
 						strpos($match[2], 'size=') !== false || strpos($match[2],'rank=')  !== false || strpos($match[2], 'gems=') !== false ||
-						strpos($match[2], 'loc=') !== false || strpos($match[2],'realm=')  !== false || strpos($match[2],'region=')  !== false  )
+						strpos($match[2], 'loc=') !== false || strpos($match[2],'realm=')  !== false || strpos($match[2],'region=')  !== false ||
+                        strpos($match[2],'bonus=')  !== false )
 					)
 				{
 					// we have arguments

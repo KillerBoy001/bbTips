@@ -1,12 +1,12 @@
 <?php
 /**
- * bbTips 1.0.5
+ * bbTips 1.0.6
  *
  * @package bbDkp-installer
  * @author sajaki9@gmail.com
  * @copyright (c) 2009 bbDkp https://github.com/bbDKP/bbtips
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version 1.0.5
+ * @version 1.0.6
  *
  */
 
@@ -250,9 +250,11 @@ $versions = array(
      ),
     '1.0.5' => array(
 	    //no db changes
-    	'custom' => array( 'pluginupdater', 'bbdkp_caches'),  
      ),
-     
+    '1.0.6' => array(
+        //no db changes
+        'custom' => array( 'pluginupdater', 'bbdkp_caches'),
+    ),
      
 );
 
