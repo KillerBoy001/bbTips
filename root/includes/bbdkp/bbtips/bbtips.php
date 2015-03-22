@@ -110,14 +110,16 @@ abstract class bbtips
 		}
 		
 	}
-	
-	/**
-	* Attempts to read URL and return content
-	* @access public
-	* 
-	* @param $type default 'item'
-	* 
-	**/
+
+    /**
+     * Attempts to read URL and return content
+     *
+     * @access public
+     *
+     * @param $type default 'item'
+     *
+     **@return \xml
+     */
 	public function gethtml($name, $type = 'item')
 	{
 		// build the url depending on bbcode
