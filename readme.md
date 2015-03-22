@@ -1,6 +1,6 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
 
-#bbTips v1.0.6
+#bbTips v1.0.6-dev
 
 [Wowhead tooltips](http://www.wowhead.com/tooltips) lets you have tooltips on urls by wowhead Id. 
 
